@@ -1,6 +1,5 @@
 const {canConstruct} = require('../javascript/algorithms/ransomNote.js');
 
-
 describe('Ransom Note', () => {
   it('returns expected boolean value', () => {
     expect(canConstruct('a', 'b')).toBe(false);

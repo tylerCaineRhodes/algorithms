@@ -13,8 +13,8 @@ var highFive = function (items) {
         return b - a
       });
       storage[items[i][0]] = storage[items[i][0]].slice(0, 5)
-    }
-  }
+    };
+  };
 
   for (studentId in storage) {
     let studentAverage =
@@ -22,6 +22,6 @@ var highFive = function (items) {
         return a + b;
       }, 0) / 5;
     result.push([studentId, Math.floor(studentAverage)]);
-  }
+  };
   return result;
 };

@@ -4,13 +4,13 @@ const reverseInPlace = (array) => {
   while (endingIndex - beginningIndex >= 1) {
     let saved = array[beginningIndex];
     array[beginningIndex] = array[endingIndex];
-    array[endingIndex] = saved
+    array[endingIndex] = saved;
 
     beginningIndex += 1;
     endingIndex -= 1;
 
-  }
-  return array
+  };
+  return array;
 }
 
-console.log(reverseInPlace([1, 2, 3, 4]))
+console.log(reverseInPlace([1, 2, 3, 4]));

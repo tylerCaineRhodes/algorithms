@@ -1,19 +1,10 @@
-let input = [
-  { startTime: 0, endTime: 1 },
-  { startTime: 3, endTime: 5 },
-  { startTime: 4, endTime: 8 },
-  { startTime: 10, endTime: 12 },
-  { startTime: 9, endTime: 10 },
-]
-
-
 const mergeRanges = (meetings) => {
   //make copy of meetings
   let meetingsCopy = JSON.parse(JSON.stringify(meetings));
   //sort meetings by start time 
   let sortedMeetings = meetingsCopy.sort((a, b) => {
     return a.startTime - b.startTime
-  })
+  });
   //create merged meetings variable and set first object as last merged
   let mergedMeetings = [sortedMeetings[0]];
 
@@ -23,9 +14,9 @@ const mergeRanges = (meetings) => {
       lastMerged.endTime = Math.max(sortedMeetings[i].endTime, lastMerged.endTime);
     } else {
       mergedMeetings.push(sortedMeetings[i]);
-    }
-  }
-  return mergedMeetings
-}
+    };
+  };
+  return mergedMeetings;
+};
 
-console.log(mergeRanges(input));
+module.exports = { mergeRanges };

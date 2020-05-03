@@ -11,7 +11,7 @@ const reverseWordsNormieVersion = (words) => {
     words[lastPointer] = frontVal;
     firstPointer += 1;
     lastPointer -= 1;
-  }
+  };
   //join on space and return
   return words.join(' ');
-}
+};

@@ -10,8 +10,8 @@ var canConstruct = function (ransomNote, magazine) {
       //else, return false
     } else {
       return false;
-    }
-  }
+    };
+  };
   //return true
   return true;
 };

@@ -7,8 +7,8 @@ var solution = function (isBadVersion) {
         start = midpoint + 1;
       } else {
         end = midpoint;
-      }
-    }
+      };
+    };
     firstBadVersion = start;
     return firstBadVersion;
   };

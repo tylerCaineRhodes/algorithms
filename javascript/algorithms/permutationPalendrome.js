@@ -5,9 +5,9 @@ const hasPalendrome = (string) => {
   for (let letter of string) {
     //if letter exists in set, delete from set
     if (unpaired.has(letter)) {
-      unpaired.delete(letter)
+      unpaired.delete(letter);
     } else {
-      unpaired.add(letter)
+      unpaired.add(letter);
     };
   };
   //else, add to set
