@@ -4,6 +4,7 @@ const reverseWordsNormieVersion = (words) => {
   //turn into array of words
   words = words.split(' ');
   words = words.join('');
+ 
   //for each word in array, swpa the fist and last in the array
   while (firstPointer < lastPointer) {
     let frontVal = words[firstPointer];
