@@ -1,5 +1,5 @@
 var numJewelsInStones = function (J, S) {
-  let count = 0, storage = {};
+  let count = 0, storage = {}
 
   for (let i = 0; i < J.length; i++) {
     storage[J[i]] = true;
@@ -13,4 +13,6 @@ var numJewelsInStones = function (J, S) {
   return count;
 };
 
+
 module.exports = { numJewelsInStones };
+
