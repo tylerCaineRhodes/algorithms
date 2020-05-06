@@ -7,5 +7,3 @@ describe('mergeSortedArrays', () => {
     expect(mergeSortedArrays(myArray, someoneElseArray)).toStrictEqual([ 1, 3, 4, 5, 6, 8, 10, 11, 12, 14, 15, 19]);
   });
 });
-
-

@@ -20,7 +20,4 @@ var majorityElement = function(nums) {
   return parseInt(maxKey);
 };
 
-
 module.exports = { majorityElement };
-
-

@@ -13,5 +13,4 @@ var firstUniqChar = function (s) {
   return -1;
 };
 
-
 module.exports = { firstUniqChar };
