@@ -1,5 +1,4 @@
 var firstUniqChar = function (s) {
-  //collect all of the objects where the keys are the letter and value is the amount of time it appears.
   let storage = {};
 
   for (let letter of s) {
