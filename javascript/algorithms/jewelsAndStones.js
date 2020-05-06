@@ -15,4 +15,3 @@ var numJewelsInStones = function (J, S) {
 
 
 module.exports = { numJewelsInStones };
-
