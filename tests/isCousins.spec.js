@@ -21,6 +21,7 @@ const { isCousins } = require('../javascript/algorithms/isCousins.js');
         let temp = new TreeNode(arr[index]);
         root = temp;
         //insert left child
+        console.log(2 * index + 1);
         root.left = this.insertLevelOrder(arr, root.left, (2 * index + 1));
         //insert right child
         root.left = this.insertLevelOrder(arr, root.right, (2 * index + 2));
@@ -28,18 +29,25 @@ const { isCousins } = require('../javascript/algorithms/isCousins.js');
       return root;
     };
   };
+  
+  printInOrder = (root) => {
+    if(root !== null){
+      printInOrder(root.left);
+      console.log(root.val);
+      printInOrder(root.right);
+    };
+  };
 
   let testTree1 = new Tree();
   let populated1 = testTree1.insertLevelOrder([1, 2, 3, 4], testTree1.root, 0);
+ printInOrder(populated1);
 
   let testTree2 = new Tree();
   let populated2 = testTree2.insertLevelOrder([1, 2, 3, null, 4, null, 5], testTree2.root, 0);
 
   let testTree3 = new Tree();
   let populated3 = testTree3.insertLevelOrder([1, 2, 3, null, 4], testTree3.root, 0);
-
-
-
+  
   describe('isCousins', () => {
     it('case: root = [1,2,3,4], x = 4, y = 3, ouput: false', () => {
       expect(isCousins(populated1, 4, 3)).toBe(false);
