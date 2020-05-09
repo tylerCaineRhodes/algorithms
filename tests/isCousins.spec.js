@@ -1,63 +1,31 @@
 const { isCousins } = require('../javascript/algorithms/isCousins.js');
+const  {
+  Node,
+  BFS_Print,
+  DFS_Print,
+  createBinaryTreeFromArray,
+} = require('../helperFunctions/binaryTreeMethods.js');
 
-   class TreeNode {
-    constructor(val, left, right) {
-      this.val = (val===undefined ? 0 : val);
-      this.left = (left===undefined ? null : left);
-      this.right = (right===undefined ? null : right);
-    };
-  };
-
-  class Tree {
-    constructor(val){
-      this.root = val || null;
-      this.left = null;
-      this.right = null;
-    };
-
-    insertLevelOrder = (arr, root, index) => {
-      //base case
-      if(index < arr.length){
-        let temp = new TreeNode(arr[index]);
-        root = temp;
-        //insert left child
-        console.log(2 * index + 1);
-        root.left = this.insertLevelOrder(arr, root.left, (2 * index + 1));
-        //insert right child
-        root.left = this.insertLevelOrder(arr, root.right, (2 * index + 2));
-      };
-      return root;
-    };
-  };
-  
-  printInOrder = (root) => {
-    if(root !== null){
-      printInOrder(root.left);
-      console.log(root.val);
-      printInOrder(root.right);
-    };
-  };
-
-  let testTree1 = new Tree();
-  let populated1 = testTree1.insertLevelOrder([1, 2, 3, 4], testTree1.root, 0);
- printInOrder(populated1);
-
-  let testTree2 = new Tree();
-  let populated2 = testTree2.insertLevelOrder([1, 2, 3, null, 4, null, 5], testTree2.root, 0);
-
-  let testTree3 = new Tree();
-  let populated3 = testTree3.insertLevelOrder([1, 2, 3, null, 4], testTree3.root, 0);
   
   describe('isCousins', () => {
+    let testTree1 = new Node();
+    let testTree2 = new Node();
+    let testTree3 = new Node();
+    let rootTest1 = createBinaryTreeFromArray(testTree1, [1, 2, 3, 4]);
+    let rootTest2 = createBinaryTreeFromArray(testTree2, [1, 2, 3, null, 4, null, 5]);
+    let rootTest3 = createBinaryTreeFromArray(testTree3, [1, 2, 3, null, 4]);
+    console.log(DFS_Print(rootTest2))
+    console.log(BFS_Print(rootTest2))
+    
     it('case: root = [1,2,3,4], x = 4, y = 3, ouput: false', () => {
-      expect(isCousins(populated1, 4, 3)).toBe(false);
+      expect(isCousins(rootTest1, 4, 3)).toBe(false);
     });
 
     it('case: root = [1,2,3, null, 4, null, 5], x = 5, y = 4, ouput: true', () => {
-      expect(isCousins(populated2, 5, 4)).toBe(true);
+      expect(isCousins(rootTest2, 5, 4)).toBe(true);
     });
 
     it('case: root = [1, 2, 3, null, 4], x = 2, y = 3, ouput: false', () => {
-      expect(isCousins(populated3, 2, 3)).toBe(false);
+      expect(isCousins(rootTest3, 2, 3)).toBe(false);
     });
   });

@@ -18,8 +18,8 @@ var highFive = function (items) {
 
   for (studentId in storage) {
     let studentAverage =
-      storage[studentId].reduce((a, b) => {
-        return a + b;
+      storage[studentId].reduce((acc, val) => {
+        return acc + val;
       }, 0) / 5;
     result.push([studentId, Math.floor(studentAverage)]);
   };
