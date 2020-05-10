@@ -1,4 +1,4 @@
-const { findComplement } = require('../javascript/algorithms/numberComplement.js');
+const { findComplement } = require('../javascript/numberComplement.js');
 
 describe('findComplement', () => {
   it('should return the integer value of flipped binary', () => {

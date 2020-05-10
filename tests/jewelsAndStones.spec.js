@@ -1,4 +1,4 @@
-const { numJewelsInStones } = require('../javascript/algorithms/jewelsAndStones.js');
+const { numJewelsInStones } = require('../javascript/jewelsAndStones.js');
 
 describe('jewels and stones', () => {
   const answer1 = numJewelsInStones('Aa', 'AabbbbbA'), answer2 = numJewelsInStones('AaB', 'AabbBbbAaAaA');

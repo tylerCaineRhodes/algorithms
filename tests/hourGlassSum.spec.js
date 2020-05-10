@@ -1,4 +1,4 @@
-const {hourglassSum} = require('../javascript/algorithms/hourGlassSum.js');
+const {hourglassSum} = require('../javascript/hourGlassSum.js');
 
 describe('hourGlassSum', () => {
 

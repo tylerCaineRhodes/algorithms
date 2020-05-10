@@ -1,4 +1,4 @@
-const { findMedianSortedArrays } = require('../javascript/algorithms/medianOfTwoSortedArrays.js');
+const { findMedianSortedArrays } = require('../javascript/medianOfTwoSortedArrays.js');
 
 describe('medianOfTwoSortedArrays', () => {
   it('returns correct medium for even and odd sums of numbers', () => {

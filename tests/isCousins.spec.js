@@ -1,4 +1,4 @@
-const { isCousins } = require('../javascript/algorithms/isCousins.js');
+const { isCousins } = require('../javascript/isCousins.js');
 const {
   Node,
   BFS_Print,

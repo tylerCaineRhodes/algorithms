@@ -1,4 +1,4 @@
-const { findJudge } = require('../javascript/algorithms/findJudge.js');
+const { findJudge } = require('../javascript/findJudge.js');
 
 describe('find judge', () => [
   it('returns -1 when there is no judge', () => {

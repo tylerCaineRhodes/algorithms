@@ -1,4 +1,4 @@
-const {canConstruct} = require('../javascript/algorithms/ransomNote.js');
+const {canConstruct} = require('../javascript/ransomNote.js');
 
 describe('Ransom Note', () => {
   it('returns expected boolean value', () => {

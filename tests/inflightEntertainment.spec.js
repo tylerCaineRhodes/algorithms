@@ -1,4 +1,4 @@
-const { isEqualFlightLength } = require('../javascript/algorithms/inflightEntertainment.js');
+const { isEqualFlightLength } = require('../javascript/inflightEntertainment.js');
 
 describe('inflightEntertainment', () => {
   it('returns a boolean whether two movie runtimes have an exact sum of the time of flight', () => {
