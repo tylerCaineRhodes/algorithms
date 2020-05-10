@@ -6,22 +6,17 @@ class Node {
   }
 }
 
-const bfsInsertion = (node, val) => {
-  let collection = [node];
+const bfsInsertion = (node, arr) => {
+  while (arr.length) {
+    let currentNode = new Node(arr.shift());
+    node = currentNode;
 
-  while (collection.length) {
-    let node = collection.shift();
-
-    if (!node.value) { //issue is here
-      node.value = val;
-      node.left = new Node();
-      node.right = new Node();
-      break;
-    }
-    let children = [node.left, node.right];
-    collection.push(...children);
+    node.left = bfsInsertion(node.left, arr);
+    node.right = bfsInsertion(node.right, arr);
   }
+  return node;
 };
+
 
 const BFS_Print = (node) => {
   let collection = [node];
@@ -73,15 +68,13 @@ const normalDF_Print = (node) => {
     }
   }
   traverse(node);
-
   return seen;
 }
 
-const createBinaryTreeFromArray = (node, arr) => {
-  arr.forEach((val) => {
-    bfsInsertion(node, val);
-  });
-  return node;
+module.exports = {
+  Node,
+  bfsInsertion,
+  BFS_Print,
+  DFS_Print,
+  normalDF_Print,
 };
-
-module.exports = { Node, bfsInsertion, BFS_Print, DFS_Print, createBinaryTreeFromArray, normalDF_Print };
