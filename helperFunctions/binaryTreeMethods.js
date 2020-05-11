@@ -6,17 +6,16 @@ class Node {
   }
 }
 
-const bfsInsertion = (node, arr) => {
-  while (arr.length) {
-    let currentNode = new Node(arr.shift());
-    node = currentNode;
+const bfsInsertion = (node, arr, index) => {
+  if (arr.length > index) {
+    let current = new Node(arr[index]);
+    node = current;
 
-    node.left = bfsInsertion(node.left, arr);
-    node.right = bfsInsertion(node.right, arr);
+    node.left = insert(node.left, arr, 2 * index + 1);
+    node.right = insert(node.right, arr, 2 * index + 2);
   }
   return node;
 };
-
 
 const BFS_Print = (node) => {
   let collection = [node];
