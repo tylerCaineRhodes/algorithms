@@ -47,7 +47,6 @@ var floodFill = function (image, sr, sc, newColor) {
 //   let oldColor = image[sr][sc];
 
 //   const changeColor = (image, sr, sc, newColor) => {
-
 //     if(image[sr][sc] === oldColor){
 //       image[sr][sc] = newColor
 //     }
@@ -57,9 +56,9 @@ var floodFill = function (image, sr, sc, newColor) {
 //       changeColor(image, sr, sc - 1, newColor);
 //     }
 //     //check above of coordinate
-//     if (image[sr - 1][sc] !== undefined && image[sr + 1][sc] === oldColor) {
+//     if (image[sr - 1] !== undefined && image[sr - 1][sc] === oldColor) {
 //       image[sr - 1][sc] = newColor;
-//       // changeColor(image, sr + 1, sc, newColor);
+//       changeColor(image, sr - 1, sc, newColor);
 //     }
 //     //check right of coordinate
 //     if (image[sr][sc + 1] !== undefined && image[sr][sc + 1] === oldColor) {
@@ -67,9 +66,9 @@ var floodFill = function (image, sr, sc, newColor) {
 //       changeColor(image, sr, sc + 1, newColor);
 //     }
 //     //check below coordinate
-//     if (image[sr - 1][sc] !== undefined && image[sr - 1][sc] === oldColor) {
-//       image[sr - 1][sc] = newColor;
-//       // changeColor(image, sr - 1, sc, newColor);
+//     if (image[sr + 1] !== undefined && image[sr + 1][sc] === oldColor) {
+//       image[sr + 1][sc] = newColor;
+//       changeColor(image, sr + 1, sc, newColor);
 //     }
 //   };
 //   changeColor(image, sr, sc, newColor);
