@@ -5,7 +5,6 @@ var removeKdigits = function (num, k) {
   let low = num.slice();
   let deleted = 0;
 
-
   for (let i = 0; i < k; i++) {
     for (let j = 0; j < low.length; j++) {
       if (low[j] > low[j + 1]) {
@@ -19,7 +18,7 @@ var removeKdigits = function (num, k) {
   while(low[0] === '0'){
     low = low.slice(1)
   }
-  
+
   low = low.slice(0, (low.length - (k - deleted)))
 
   if(low.length === 0){
