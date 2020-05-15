@@ -1,37 +1,40 @@
-var Trie = function () {
-  this.root = {};
-  this.isEndOfWord = false;
-};
+class Trie {
+  constructor() {
+    this.root = {};
+    this.endOfWord = false;
+  }
 
-Trie.prototype.insert = function (word) {
-  let node = this;
+  insert = (word) => {
+    let node = this;
 
-  for (let letter of word) {
-    if (!node.root[letter]) {
-      node.root[letter] = new Trie();
+    for (let letter of word) {
+      if (!node.root[letter]) {
+        node.root[letter] = new Trie();
+      }
+      node = node.root[letter];
     }
-    node = node.root[letter];
-  }
-  node.isEndOfWord = true;
-};
+    node.endOfWord = true;
+  };
 
-Trie.prototype.search = function (word) {
-  let node = this;
-  for (let letter of word) {
-    if (!node.root[letter]) return false;
-    node = node.root[letter];
-  }
-  return node.isEndOfWord ? true : false;
-};
-
-Trie.prototype.startsWith = function (prefix) {
-  let node = this;
-
-  for (let letter of prefix) {
-    if (!node.root[letter]) {
-      return false;
+  search = (word) => {
+    let node = this;
+    for (let letter of word) {
+      if (!node.root[letter]) {
+        return false;
+      }
+      node = node.root[letter];
     }
-    node = node.root[letter];
-  }
-  return true;
-};
+    return node.endOfWord ? true : false;
+  };
+  
+  startsWith = (word) => {
+    let node = this;
+    for (let letter of word) {
+      if (!node.root[letter]) {
+        return false;
+      }
+      node = node.root[letter];
+    }
+    return true;
+  };
+}
