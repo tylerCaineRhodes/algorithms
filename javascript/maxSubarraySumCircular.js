@@ -17,9 +17,9 @@ var maxSubarraySumCircular = function (A) {
   circleSum += kadNegative;
   //if - > + && + !== 0, return negative, else return positive
   if(circleSum > kadPositive && circleSum !== 0){
-    return circleSum
+    return circleSum;
   } else {
-    return kadPositive
+    return kadPositive;
   }
 };
 
