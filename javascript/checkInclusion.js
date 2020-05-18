@@ -21,7 +21,7 @@ const archive = (obj) => {
 
 const compare = (snippet, library1) => {
   for(let letter in snippet) {
-    if(!library1[letter] || snippet[letter] !== library1[letter]) return false;
+    if(!library1[letter] || snippet[letter] < library1[letter]) return false;
   };
   return true;
 };
