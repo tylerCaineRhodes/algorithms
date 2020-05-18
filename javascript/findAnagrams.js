@@ -39,8 +39,6 @@ const counter = (str) => {
   return collection;
 };
 
-
-
 console.log(findAnagrams('aacb', 'abc'))
 console.log(findAnagrams('cbaebabacd', 'abc'));
 console.log(findAnagrams('abab', 'ab'));
