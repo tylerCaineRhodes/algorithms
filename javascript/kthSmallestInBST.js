@@ -22,6 +22,7 @@ var kthSmallest = function (root, k) {
   return answer;
 };
 
+
 class Node {
   constructor(val, left, right){
     this.val = val || 0;
