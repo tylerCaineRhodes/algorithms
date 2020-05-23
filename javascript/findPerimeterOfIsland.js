@@ -10,7 +10,6 @@ const islandPerimeter = (map) => {
     return map[row][index];
   }
 
-
   for(let row = 0; row < map.length; row++){
     for(let colIndex = 0; colIndex < map[row].length; colIndex++){
       if(map[row][colIndex] === 0) continue;
