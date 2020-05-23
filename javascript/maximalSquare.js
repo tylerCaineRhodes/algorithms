@@ -6,8 +6,10 @@ let maximalSquare = (matrix) => {
   let height = 0;
 
   //build new matrix
-  // let answerMatrix = new Array(row_len + 1).fill(new Array(col_len + 1).fill(0));
-
+  //  let rows = new Array(row_len + 1);
+  //  let answerMatrix = Array.from(rows, (array) =>
+  //    new Array(col_len + 1).fill(0)
+  //  );
   let answerMatrix = [];
   for(let i = 0; i < row_len + 1; i++){
     let row = [];
@@ -18,7 +20,7 @@ let maximalSquare = (matrix) => {
       }
     }
   }
-
+  
   for (let row = 1; row < row_len + 1; row++) {
     for (let colIndex = 1; colIndex < col_len + 1; colIndex++) {
       if (matrix[row - 1][colIndex - 1] === 1) {
