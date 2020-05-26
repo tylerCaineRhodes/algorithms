@@ -73,5 +73,27 @@ const DFS = (node) => {
   return seen;
 }
 let newTree = bstFromPreorder([8, 5, 1, 7, 10, 12]);
-
 console.log(DFS(newTree));
+console.log(BFS(newTree));
+
+
+var bstFromPreorder = function (arr) {
+  class TreeNode {
+    constructor(value) {
+      this.val = value;
+    }
+  }
+  return createTreeNode(Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY);
+  function createTreeNode(lower, upper) {
+    if (!arr.length) {
+      return null;
+    }
+    if (arr[0] < lower || arr[0] > upper) {
+      return null;
+    }
+    const thisNode = new TreeNode(arr.shift());
+    thisNode.left = createTreeNode(lower, thisNode.val);
+    thisNode.right = createTreeNode(thisNode.val, upper);
+    return thisNode;
+  }
+};
