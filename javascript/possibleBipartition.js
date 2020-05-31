@@ -1,48 +1,76 @@
+// var possibleBipartition = function (N, dislikes) {
+//   let collection = {};
+
+//   for(let pairs of dislikes){
+//     if(collection[pairs[0]]){
+//       collection[pairs[0]][pairs[1]] = pairs[1];
+//     } else {
+//       collection[pairs[0]] = {};
+//       collection[pairs[0]][pairs[1]] = pairs[1];
+//     }
+//     if(collection[pairs[1]]){
+//       collection[pairs[1]][pairs[0]] = pairs[0];
+//     } else {
+//       collection[pairs[1]] = {};
+//       collection[pairs[1]][pairs[0]] = pairs[0];
+//     }
+//   }
+//   let seen = {};
+
+//   for(let i = 1; i < N + 1; i++){
+//     if(!seen[i]){
+//       seen[i] = 0; 
+//       let stack = [i];
+//       while(stack.length !== 0){
+//         let num = stack.pop();
+
+//         if(collection[num]){
+//           for(let edge in collection[num]){
+//             if(seen[edge]){
+//               if(seen[num] === seen[edge]){
+//                 return false;
+//               }
+//             } else {
+//               seen[edge] = (seen[num]+ 1) % 2;
+//               stack.push(edge)
+//             }
+//           }
+
+//         }
+
+//       }
+//     }
+//   }
+//   return true;
+// };
+
 var possibleBipartition = function (N, dislikes) {
-  let collection = {};
-
-  for(let pairs of dislikes){
-    if(collection[pairs[0]]){
-      collection[pairs[0]][pairs[1]] = pairs[1];
-    } else {
-      collection[pairs[0]] = {};
-      collection[pairs[0]][pairs[1]] = pairs[1];
-    }
-    if(collection[pairs[1]]){
-      collection[pairs[1]][pairs[0]] = pairs[0];
-    } else {
-      collection[pairs[1]] = {};
-      collection[pairs[1]][pairs[0]] = pairs[0];
-    }
+  // graph approach
+  const graph = new Graph(N);
+  for (let pair of dislikes) {
+    graph.addEdge(pair);
   }
-  let seen = {};
-
-  for(let i = 1; i < N + 1; i++){
-    if(!seen[i]){
-      seen[i] = 0; 
-      let stack = [i];
-      while(stack.length !== 0){
-        let num = stack.pop();
-
-        if(collection[num]){
-          for(let edge in collection[num]){
-            if(seen[edge]){
-              if(seen[num] === seen[edge]){
-                return false;
-              }
-            } else {
-              seen[edge] = (seen[num]+ 1) % 2;
-              stack.push(edge)
-            }
-          }
-
-        }
-
-      }
-    }
-  }
-  return true;
+  graph.colorNodes();
+  return graph.checkValid();
 };
+
+class Node {
+  constructor(){
+    this.edges = {};
+  }
+}
+
+class Graph {
+  constructor(count){
+    this.nodes = {};
+  }
+
+  addEdge = (node1, node2) => {
+    node1.edges[node2] = node2
+    node2.edges[node1] = node1
+  }
+}
+
 
 console.log(possibleBipartition(4, [
   [1, 2],
