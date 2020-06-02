@@ -11,8 +11,8 @@ const bfsInsertion = (node, arr, index) => {
     let current = new Node(arr[index]);
     node = current;
 
-    node.left = insert(node.left, arr, 2 * index + 1);
-    node.right = insert(node.right, arr, 2 * index + 2);
+    node.left = bfsInsertion(node.left, arr, 2 * index + 1);
+    node.right = bfsInsertion(node.right, arr, 2 * index + 2);
   }
   return node;
 };
@@ -68,28 +68,6 @@ const normalDF_Print = (node) => {
   }
   traverse(node);
   return seen;
-}
-
-const traverseMatrix = (matrix) => {
-  let rowLen = matrix.length;
-  let colLen = matrix[0].length;
-
-  for(let i = 0; i < rowLen * colLen; i++){
-    let row = ~~(i / colLen);
-    let colIndex = i % colLen
-    console.log(matrix[row][colIndex])
-  }
-}
-
-const traverseMatrix = (matrix) => {
-  let rowLen = matrix.length;
-  let colLen = matrix[0].length;
-
-  for(let row = 0; row < matrix.length; row++){
-    for(let col_Index = 0; colIndex < matrix[0].length; colIndex++){
-      console.log(matrix[row][col_Index])
-    }
-  }
 }
 
 module.exports = {
