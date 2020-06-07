@@ -6,7 +6,7 @@ let countSquaresWMatrix = (matrix) => {
   let sum = 0;
   //build new matrix
   let rows = new Array(row_len + 1);
-  let answerMatrix = Array.from(rows, (array) => new Array(col_len + 1).fill(0));
+  let answerMatrix = Array.from(rows, () => new Array(col_len + 1).fill(0));
 
   for (let row = 1; row < row_len + 1; row++) {
     for (let colIndex = 1; colIndex < col_len + 1; colIndex++) {

@@ -1,28 +1,28 @@
-//normy solution
-const mergeSort = (array) => {
-  if (array.length < 2) {
-    return array;
-  };
-  let midpointIndex = Math.floor(array.length / 2);
+// //normy solution
+// const mergeSort = (array) => {
+//   if (array.length < 2) {
+//     return array;
+//   };
+//   let midpointIndex = Math.floor(array.length / 2);
 
-  let left = mergeSort(array.slice(0, midpointIndex));
-  let right = mergeSort(array.slice(midpointIndex));
+//   let left = mergeSort(array.slice(0, midpointIndex));
+//   let right = mergeSort(array.slice(midpointIndex));
 
-  let result = [];
-  let leftPointer = 0;
-  let rightPointer = 0;
+//   let result = [];
+//   let leftPointer = 0;
+//   let rightPointer = 0;
 
-  while (result.length < left.length + right.length) {
-    if (left[leftPointer] < right[rightPointer] || leftPointer < left.length && rightPointer === right.length) {
-      result.push(left[leftPointer]);
-      leftPointer++;
-    } else {
-      result.push(right[rightPointer]);
-      rightPointer++;
-    };
-  };
-  return result;
-};
+//   while (result.length < left.length + right.length) {
+//     if (left[leftPointer] < right[rightPointer] || leftPointer < left.length && rightPointer === right.length) {
+//       result.push(left[leftPointer]);
+//       leftPointer++;
+//     } else {
+//       result.push(right[rightPointer]);
+//       rightPointer++;
+//     };
+//   };
+//   return result;
+// };
 
 //with helper function--------------------------------------------------
 
@@ -35,9 +35,9 @@ const mergeSort = (array) => {
   let left = array.slice(0, midpointIndex);
   let right = array.slice(midpointIndex);
 
-  //use merge helper function 
   return merge(mergeSort(left), mergeSort(right));
 };
+
 
 const merge = (left, right) => {
   let result = [], leftindexPointer = 0, rightindexPointer = 0;
@@ -51,5 +51,7 @@ const merge = (left, right) => {
       rightindexPointer++;
     };
   };
-  return result.concat(left.slice(leftindexPointer)).concat(right.slice(rightindexPointer));
+  return result.concat(left.slice(leftindexPointer), right.slice(rightindexPointer))
 };
+
+console.log(mergeSort([3,4,1,2,5,6]))

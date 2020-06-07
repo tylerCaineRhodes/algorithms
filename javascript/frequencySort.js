@@ -19,7 +19,6 @@ var frequencySort = function(s) {
       count++
     }
   }
-  console.log(sorted)
   return result;
 };
 
