@@ -1,28 +1,28 @@
-// //normy solution
-// const mergeSort = (array) => {
-//   if (array.length < 2) {
-//     return array;
-//   };
-//   let midpointIndex = Math.floor(array.length / 2);
+//normy solution
+const mergeSort = (array) => {
+  if (array.length < 2) {
+    return array;
+  };
+  let midpointIndex = Math.floor(array.length / 2);
 
-//   let left = mergeSort(array.slice(0, midpointIndex));
-//   let right = mergeSort(array.slice(midpointIndex));
+  let left = mergeSort(array.slice(0, midpointIndex));
+  let right = mergeSort(array.slice(midpointIndex));
 
-//   let result = [];
-//   let leftPointer = 0;
-//   let rightPointer = 0;
+  let result = [];
+  let leftPointer = 0;
+  let rightPointer = 0;
 
-//   while (result.length < left.length + right.length) {
-//     if (left[leftPointer] < right[rightPointer] || leftPointer < left.length && rightPointer === right.length) {
-//       result.push(left[leftPointer]);
-//       leftPointer++;
-//     } else {
-//       result.push(right[rightPointer]);
-//       rightPointer++;
-//     };
-//   };
-//   return result;
-// };
+  while (result.length < left.length + right.length) {
+    if (left[leftPointer] < right[rightPointer] || leftPointer < left.length && rightPointer === right.length) {
+      result.push(left[leftPointer]);
+      leftPointer++;
+    } else {
+      result.push(right[rightPointer]);
+      rightPointer++;
+    };
+  };
+  return result;
+};
 
 //with helper function--------------------------------------------------
 
