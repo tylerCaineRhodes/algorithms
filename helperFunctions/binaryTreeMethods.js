@@ -4,6 +4,25 @@ class Node {
     this.left = null;
     this.right = null;
   }
+  //bfs insertion, alt
+  insert = (val) => {
+    let collection = [this.value];
+
+    while (collection.length) {
+      let current = collection.pop();
+
+      if (!current.left) {
+        current.left = new Node(val);
+        return;
+      }
+      if (!current.right) {
+        current.right = new Node(val);
+        return;
+      }
+      collection.unshift(current.left);
+      collection.unshift(current.right);
+    }
+  };
 }
 
 const bfsInsertion = (node, arr, index) => {
