@@ -5,12 +5,10 @@ class MinHeap {
   getMin = () => {
     return this.heap[0];
   };
-
   //switches values in the heap
   swapsies = (index1, index2) => {
     [this.heap[index1], this.heap[index2]] = [this.heap[index2], this.heap[index1]];
   };
-
   insert = (node) => {
     //push to bottom of heap
     this.heap.push(node);
@@ -30,11 +28,11 @@ class MinHeap {
   getKthSmallest = (k) => {
     if (k > this.heap.length - 1) return null;
     //make immutable
-    let copy = new MinHeap(this.heap);
+    let copyArr = this.heap.slice(), copyHeap = new MinHeap(copyArr);
     for (let i = 1; i < k; i++) {
-      copy.remove();
+      copyHeap.remove();
     }
-    return copy.remove();
+    return copyHeap.remove();
   };
 
   remove = () => {
@@ -84,3 +82,4 @@ test.insert(16);
 console.log(test.getMin());
 console.log(test.heap);
 console.log(test.getKthSmallest(3));
+console.log(test.heap);
