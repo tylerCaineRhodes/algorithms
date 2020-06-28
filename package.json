@@ -7,7 +7,10 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test-coverage": "jest --coverage",
+    "test-l": "jest --watch",
+    "test-lc": "jest --coverage --watch"
   },
   "author": "",
   "license": "ISC",
