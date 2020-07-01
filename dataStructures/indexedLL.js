@@ -64,9 +64,24 @@ class LL {
     this.head = this.head.next; 
   }
 
+  removeTail = () => {
+    if(!this.tail) return;
+
+    let current = this.head;
+    while(current.next.next){
+      current = current.next;
+    }
+    current.next = null;
+    this.tail = current;
+  }
+
   removeNode = (node) => {
-    node.value = node.next.value;
-    node.next = node.next.next;
+    if(node !== this.tail){
+      node.value = node.next.value;
+      node.next = node.next.next;
+    } else {
+      this.removeTail();
+    }
   }
 }
 
