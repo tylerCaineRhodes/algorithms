@@ -5,13 +5,6 @@ class LinkedList {
   }
 }
 
-class LinkedList {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
-
 function removeKthNodeFromEnd1(head, k) {
   let pointer = head,
     disciple = head;
