@@ -76,9 +76,13 @@ test.insert(8);
 test.insert(1);
 test.remove();
 test.remove();
+test.remove();
 test.insert(3);
 test.insert(16);
+test.insert(57);
 
+console.log(test.getMin());
+console.log(test.getMin());
 console.log(test.getMin());
 console.log(test.heap);
 console.log(test.getKthSmallest(3));
