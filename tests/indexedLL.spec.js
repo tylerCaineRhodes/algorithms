@@ -13,12 +13,32 @@ describe('empty linked list', () => {
     expect(linkedList.tail.value).toEqual(1);
   });
 
-   it("addtoTail: adds a head and a tail if either don't exist, with method", () => {
-     linkedList.addToTail(1);
+  it('addToHead: replaces the head node as expected', () => {
+    linkedList.addToHead(40);
+    linkedList.addToHead(50);
+    expect(linkedList.head.value).toEqual(50);
+    expect(linkedList.head.next.value).toEqual(40);
+  })
 
-     expect(linkedList.head.value).toEqual(1);
-     expect(linkedList.tail.value).toEqual(1);
-   });
+  it("addtoTail: adds a head and a tail if either don't exist, with method", () => {
+    linkedList.addToTail(1);
+
+    expect(linkedList.head.value).toEqual(1);
+    expect(linkedList.tail.value).toEqual(1);
+  });
+
+  it("addtoTail: forms a complete LL with add-to-tail method", () => {
+    linkedList.addToTail(1);
+    linkedList.addToTail(2);
+    linkedList.addToTail(3);
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+
+    expect(linkedList.head.value).toEqual(1);
+    expect(linkedList.head.next.value).toEqual(2);
+    expect(linkedList.head.next.next.value).toEqual(3);
+    expect(linkedList.tail.value).toEqual(5);
+  });
 })
 
 describe('indexed linked list', () => {
@@ -29,6 +49,11 @@ describe('indexed linked list', () => {
        linkedList.addToHead(2);
        linkedList.addToHead(3);
   });
+
+  it('addToHead: head and tail should be different vals', () => {
+    expect(linkedList.head.value).toEqual(3);
+    expect(linkedList.tail.value).toEqual(1);
+  })
 
   it('addToHead: if head exists, adds a new value and sets to head of list', () => {
     expect(linkedList.head.value).toEqual(3);

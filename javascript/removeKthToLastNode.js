@@ -5,7 +5,7 @@ class LinkedList {
   }
 }
 
-function removeKthNodeFromEnd1(head, k) {
+function removeKthNodeFromEnd(head, k) {
   let pointer = head,
     disciple = head;
   let increment = 1;
@@ -26,4 +26,6 @@ function removeKthNodeFromEnd1(head, k) {
   } else {
     disciple.next = disciple.next.next;
   }
-}
+};
+
+module.exports = removeKthNodeFromEnd;
