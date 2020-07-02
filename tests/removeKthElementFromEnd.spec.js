@@ -3,7 +3,6 @@ const remove = require('../Javascript/removeKthToLastNode');
 
 describe('remove kth to last node from a linked list', () => {
   let linkedlist;
-
   beforeEach(() => {
     linkedlist = new LL();
     linkedlist.addToTail(1)

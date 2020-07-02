@@ -1,4 +1,4 @@
-const { Node, LL } = require('../dataStructures/indexedLL.js');
+const { LL } = require('../dataStructures/indexedLL.js');
 
 describe('empty linked list', () => {
   let linkedList;
