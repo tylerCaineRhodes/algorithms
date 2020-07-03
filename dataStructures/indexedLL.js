@@ -1,5 +1,5 @@
 class Node {
-  constructor(value){
+  constructor(value) {
     this.value = value || null;
     this.next = null
   }
@@ -14,7 +14,7 @@ class LL {
   addToHead = (val) => {
     let newNode = new Node(val);
 
-    if(!this.head){
+    if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
     } else {
@@ -27,7 +27,7 @@ class LL {
   addToTail = (val) => {
     let newTail = new Node(val);
 
-    if(!this.tail){
+    if (!this.tail) {
       this.head = newTail
       this.tail = newTail
     } else {
@@ -38,8 +38,8 @@ class LL {
 
   contains = (val) => {
     let current = this.head
-    while(current){
-      if(current.value === val){
+    while (current) {
+      if (current.value === val) {
         return true;
       }
       current = current.next;
@@ -50,25 +50,25 @@ class LL {
   getNodeAtIndex = (index) => {
     let current = this.head;
 
-    for(let i = 0; i < index; i++){
-      if(current === null) return null;
-      
+    for (let i = 0; i < index; i++) {
+      if (current === null) return null;
+
       current = current.next
     }
     return current;
   }
 
   removeHead = () => {
-    if(!this.head) return; 
+    if (!this.head) return;
 
-    this.head = this.head.next; 
+    this.head = this.head.next;
   }
 
   removeTail = () => {
-    if(!this.tail) return;
+    if (!this.tail) return;
 
     let current = this.head;
-    while(current.next.next){
+    while (current.next.next) {
       current = current.next;
     }
     current.next = null;
@@ -76,7 +76,39 @@ class LL {
   }
 
   removeNode = (node) => {
-    if(node !== this.tail){
+    if (node !== this.tail) {
+      node.value = node.next.value;
+      node.next = node.next.next;
+    } else {
+      this.removeTail();
+    }
+  }
+
+  addAtIndex = (index, val) => {
+    let indexNode = this.getNodeAtIndex(index);
+    if (!indexNode) {
+      return;
+    } else if (indexNode === this.tail) {
+      this.addToTail(val)
+    } else if (indexNode === this.head) {
+      this.addToHead(val)
+    } else {
+      let newNode = new Node(val);
+      let pointer = this.head;
+
+      while (pointer.next && pointer.next !== indexNode) {
+        pointer = pointer.next
+      }
+      newNode.next = indexNode;
+      pointer.next = newNode;
+    }
+  };
+
+  deleteAtIndex = (index) => {
+    let node = this.get(index);
+    if (!node) return;
+
+    if (node !== this.tail) {
       node.value = node.next.value;
       node.next = node.next.next;
     } else {
