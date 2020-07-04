@@ -10,7 +10,7 @@ class LL {
     this.head = null;
     this.tail = null;
   }
-  //addHead
+
   addAtHead = (val) => {
     let newNode = new Node(val);
 
@@ -21,76 +21,68 @@ class LL {
       this.head = newNode;
     }
   };
-  //addTail
+
   addAtTail = (val) => {
     if (!this.tail) {
       this.addAtHead(val);
-    } else {
-      let newTail = new Node(val);
-      this.tail.next = newTail;
-      this.tail = newTail;
     }
+    let newNode = new Node(val);
+    this.tail.next = newNode;
+    this.tail = newNode;
   };
-  //deleteHead
+
   deleteHead = () => {
     if (!this.head) return;
     this.head = this.head.next;
   };
-  //getnodeatindex
-  getAtIndex = (index) => {
-    let current = this.head;
-    for (let i = 0; i < index; i++) {
-      if (current === null) return null;
 
-      current = current.next;
+  getAtIndex = (index) => {
+    let curr = this.head;
+    for (let i = 0; i < index; i++) {
+      if (!curr) return null;
+      curr = curr.next;
     }
-    return current;
+    return curr;
   };
 
   getPrevNode = (index) => {
-    let current = this.head;
+    let curr = this.head;
     for (let i = 0; i < index - 1; i++) {
-      if (current === null) return null;
-      current = current.next;
+      if (!curr) return null;
+      curr = curr.next;
     }
-    return current;
+    return curr;
   };
 
   insertNodeAtIndex = (val, index) => {
-    if (!this.getAtIndex(index)) return;
+    if (!this.getAtIndex(index)) {
+      return;
+    }
+
     if (index === 0) {
       this.addAtHead(val);
       return;
     }
-    if (this.getAtIndex(index) === this.tail) {
-      this.addAtTail(val);
-      return;
-    }
-
-    let node = this.getPrevNode(index);
-    if (!node) return;
 
     let newNode = new Node(val);
-    //here is study party
-    newNode.next = node.next;
-    node.next = newNode;
+    let prev = this.getPrevNode(index);
+
+    newNode.next = prev.next;
+    prev.next = newNode;
   };
 
   deleteNodeAtIndex = (index) => {
-    if (index === 0) {
-      this.head = this.head.next;
-    } else if (!this.getAtIndex(index)) {
-      return;
-    }
-    let pred = this.getPrevNode(index);
+    if (!this.getAtIndex(index)) return;
 
-    if (!pred) {
-      return;
+    if (index === 0) {
+      this.deleteHead(val);
     }
-    pred.next = pred.next.next;
+    let prev = this.getPrevNode(index);
+    prev.next = prev.next.next;
   };
 }
 
+//prints values in LL
 let print = (head) => {
   let result = [],
     curr = head;
