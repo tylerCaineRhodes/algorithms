@@ -27,7 +27,11 @@ var removeKdigits = function (num, k) {
   return low;
 };
 
-console.log(removeKdigits('5337', 2));
-console.log(removeKdigits('1432219', 3));
-console.log(removeKdigits('10200', 1));
-console.log(removeKdigits('10', 0));
+const tests = [
+  removeKdigits('5337', 2),
+  removeKdigits('1432219', 3),
+  removeKdigits('10200', 1),
+  removeKdigits('10', 0)
+];
+
+console.log(...tests);

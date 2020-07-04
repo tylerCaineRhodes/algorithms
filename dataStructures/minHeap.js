@@ -82,8 +82,6 @@ test.insert(16);
 test.insert(57);
 
 console.log(test.getMin());
-console.log(test.getMin());
-console.log(test.getMin());
 console.log(test.heap);
 console.log(test.getKthSmallest(3));
 console.log(test.heap);

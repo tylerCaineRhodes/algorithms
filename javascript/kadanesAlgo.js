@@ -20,5 +20,5 @@ const kadanes = (arr) => {
 }
 
 
-console.log(kadanes([-2,-3,4,-1,-2,1,5,-3])) //7
-console.log(kadanes([1, -2, 3, -2])); //3
+console.log('expects 7 --> ', kadanes([-2,-3,4,-1,-2,1,5,-3]))
+console.log('expect 3 --> ', kadanes([1, -2, 3, -2])); 

@@ -106,11 +106,14 @@ let thing = printLL(myll.head);
 console.log(thing);
 
 //2 -> 1 -> 5 -> null
-console.log(check(myll.get(0).value, 2));
-console.log(check(myll.get(1).value, 1));
-console.log(check(myll.get(2).value, 5));
-console.log(check(myll.get(3), null));
-console.log(check(myll.get(10), null));
+let tests = [
+  check(myll.get(0).value, 2),
+  check(myll.get(1).value, 1),
+  check(myll.get(2).value, 5),
+  check(myll.get(3), null),
+  check(myll.get(10), null),
+];
+console.log(...tests);
 
 myll.addAtIndex(10, 4);
 myll.addAtIndex(0, 4);
@@ -133,4 +136,3 @@ console.log(printLL(myll.head));
 myll.deleteAtIndex(0);
 console.log(printLL(myll.head));
 console.log(check(myll.get(0).value, 5));
-//when index is tail

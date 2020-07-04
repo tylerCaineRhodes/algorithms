@@ -94,16 +94,17 @@ let print = (head) => {
   return result;
 };
 
-let test = new LL();
-test.addAtHead(1);
-test.addAtHead(2);
-test.addAtHead(5);
+const addHeadsFunc = (LL, vals) => {
+  vals.forEach(val => LL.addAtHead(val));
+}
 
-test.insertNodeAtIndex(6, 1);
-test.insertNodeAtIndex(13, 0);
-test.insertNodeAtIndex(2, 1);
-test.insertNodeAtIndex(69, 3);
-test.insertNodeAtIndex(404, 6);
-// console.log(test.head)
+const insertValsAtIndex = (LL, vals) => {
+  vals.forEach((val) => LL.insertNodeAtIndex(val[0], val[1]));
+}
+
+let test = new LL();
+addHeadsFunc(test, [1,2,5])
+insertValsAtIndex(test, [[6, 1], [13, 0], [2 , 1], [69, 3], [404, 6]])
+
 console.log('tail -->', test.tail);
 console.log(print(test.head));

@@ -78,12 +78,16 @@ class StockSpanner {
   }
 }
 
-let stockTHing = new StockSpanner();
-console.log(stockTHing.next(100));
-console.log(stockTHing.next(80));
-console.log(stockTHing.next(60));
-console.log(stockTHing.next(70));
-// console.log(stockTHing.next(60));
-// console.log(stockTHing.next(75));
-// console.log(stockTHing.next(85));
-// console.log(stockTHing.next(5));
+const stockTHing = new StockSpanner();
+const tests = [
+  stockTHing.next(100),
+  stockTHing.next(80),
+  stockTHing.next(60),
+  stockTHing.next(70),
+  stockTHing.next(60),
+  stockTHing.next(75),
+  stockTHing.next(85),
+  stockTHing.next(5),
+];
+
+console.log({ tests });

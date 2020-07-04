@@ -35,6 +35,7 @@ const findMaxLength = (nums) => {
   return max;
 }
 
-
-console.log(findMaxLength([0, 1])); //2
-console.log(findMaxLength([0, 1, 0])); //2
+console.log(
+  findMaxLength([0, 1]), 
+  findMaxLength([0, 1, 0])
+); 
