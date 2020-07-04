@@ -89,10 +89,11 @@ const normalDF_Print = (node) => {
   return seen;
 }
 
+
 module.exports = {
   Node,
   bfsInsertion,
   BFS_Print,
   DFS_Print,
-  normalDF_Print,
+  normalDF_Print
 };
