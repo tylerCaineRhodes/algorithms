@@ -32,13 +32,12 @@ class DoublyLinkedList {
 	}
 
 	insertBefore(node, nodeToInsert) {
-		if (nodeToInsert === this.head && nodeToInsert === this.tail || !node) {
-			return;
-		}
+		if (nodeToInsert === this.head && nodeToInsert === this.tail || !node) return;
+
 		this.remove(nodeToInsert);
+
 		nodeToInsert.prev = node.prev;
 		nodeToInsert.next = node;
-
 		if (!node.prev) {
 			this.head = nodeToInsert;
 		} else {
@@ -52,6 +51,7 @@ class DoublyLinkedList {
 		if (nodeToInsert === this.head && nodeToInsert === this.tail || !node) return;
 
 		this.remove(nodeToInsert)
+
 		nodeToInsert.next = node.next;
 		nodeToInsert.prev = node;
 		if (!node.next) {
@@ -101,10 +101,10 @@ class DoublyLinkedList {
 		if (node === this.tail) {
 			this.tail = this.tail.prev;
 		}
+		//study party with this-y
 		if (node.prev) {
 			node.prev.next = node.next;
 		}
-		//study party with this-y
 		if (node.next) {
 			node.next.prev = node.prev;
 		}
