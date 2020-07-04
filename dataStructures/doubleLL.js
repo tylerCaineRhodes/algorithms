@@ -32,7 +32,7 @@ class DoublyLinkedList {
 	}
 
 	insertBefore(node, nodeToInsert) {
-		if (nodeToInsert === this.head && nodeToInsert === this.tail) {
+		if (nodeToInsert === this.head && nodeToInsert === this.tail || !node) {
 			return;
 		}
 		this.remove(nodeToInsert);
@@ -49,7 +49,7 @@ class DoublyLinkedList {
 
 
 	insertAfter(node, nodeToInsert) {
-		if (nodeToInsert === this.head && nodeToInsert === this.tail) return;
+		if (nodeToInsert === this.head && nodeToInsert === this.tail || !node) return;
 
 		this.remove(nodeToInsert)
 		nodeToInsert.next = node.next;
@@ -78,7 +78,7 @@ class DoublyLinkedList {
 		if (current) {
 			this.insertBefore(current, nodeToInsert);
 		} else {
-			this.setTail(current, nodeToInsert);
+			this.setTail(nodeToInsert);
 		}
 	}
 
@@ -104,11 +104,25 @@ class DoublyLinkedList {
 		if (node.prev) {
 			node.prev.next = node.next;
 		}
+		//study party with this-y
 		if (node.next) {
 			node.next.prev = node.prev;
 		}
 		node.next = null;
 		node.prev = null;
+	}
+
+	getNodeAtIndex = (index) => {
+		if(index < 0) return null;
+
+		let curr = this.head;
+
+		for(let i = 0; i < index; i++){
+			if(!curr) return null;
+
+			curr = curr.next
+		}
+		return curr;
 	}
 
 	containsNodeWithValue(value) {
@@ -121,3 +135,5 @@ class DoublyLinkedList {
 		return false;
 	}
 }
+
+module.exports = { DoublyLinkedList, Node };
