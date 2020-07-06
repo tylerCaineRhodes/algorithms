@@ -17,7 +17,7 @@ describe('invertBST', () => {
     expect(BFS_Print(tree)).toStrictEqual([4,2,7,1,3,6,9]);
     expect(DFS_Print(tree)).toStrictEqual([4,2,1,3,7,6,9]);
     expect(normalDF_Print(tree)).toStrictEqual([4, 2, 1, 3, 7, 6, 9]);
-  })
+  });
 
   it('should invert tree', () => {
     let inverted = invertTree(tree);
