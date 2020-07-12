@@ -1,22 +1,24 @@
 function findClosestValueInBst(tree, target) {
-  const mostClose = (tree, closest) => {
+	let closest = tree.value;
+	
+  const mostClose = (tree) => {
     return Math.abs(target - closest) > Math.abs(target - tree.value)
       ? true
       : false;
   };
-  const traverse = (tree, closest) => {
-    if (tree === null) return closest;
+  const traverse = (tree) => {
+    if (tree === null) return;
 
-    if (mostClose(tree, closest)) {
+    if (mostClose(tree)) {
       closest = tree.value;
     }
     if (target < tree.value) {
-      return traverse(tree.left, closest);
+      traverse(tree.left);
     }
     if (target > tree.value) {
-      return traverse(tree.right, closest);
+     traverse(tree.right);
     }
-    return closest;
   };
-  return traverse(tree, tree.value);
+  traverse(tree);
+	return closest;
 };
