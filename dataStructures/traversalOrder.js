@@ -107,32 +107,32 @@ const DF_PREORDER_PRINT_SD = (node, seen = []) => {
   seen.push(node.value);
 
   if (node.left) {
-    seen = seen.concat(DF_PREORDER_PRINT_SD(node.left));
+    DF_PREORDER_PRINT_SD(node.left, seen);
   };
   if (node.right) {
-    seen = seen.concat(DF_PREORDER_PRINT_SD(node.right));
+    DF_PREORDER_PRINT_SD(node.right, seen);
   };
   return seen;
 };
 
 const DF_INORDER_PRINT_SD = (node, seen = []) => {
   if (node.left) {
-    seen = seen.concat(DF_INORDER_PRINT_SD(node.left));
+   DF_INORDER_PRINT_SD(node.left, seen);
   };
   seen.push(node.value);
 
   if (node.right) {
-    seen = seen.concat(DF_INORDER_PRINT_SD(node.right));
+    DF_INORDER_PRINT_SD(node.right, seen);
   };
   return seen;
 };
 
 const DF_POSTORDER_PRINT_SD = (node, seen = []) => {
   if (node.left) {
-    seen = seen.concat(DF_POSTORDER_PRINT_SD(node.left));
+    DF_POSTORDER_PRINT_SD(node.left, seen);
   };
   if (node.right) {
-    seen = seen.concat(DF_POSTORDER_PRINT_SD(node.right));
+    DF_POSTORDER_PRINT_SD(node.right, seen);
   };
   seen.push(node.value);
   return seen;
