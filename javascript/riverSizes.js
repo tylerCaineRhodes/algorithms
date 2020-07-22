@@ -32,7 +32,7 @@ const traverseNode = (grid, i, j, aux, result) => {
 
 const getUnvisited = (row, col, matrix, aux) => {
   let unvisited = [];
-
+  
   if(row > 0 && !aux[row - 1][col]){
     unvisited.push([row - 1, col])
   }
