@@ -1,5 +1,5 @@
 function hasSingleCycle_AuxArray(array) {
-  let auxArray = new Array(array.length).fill(0);
+  const auxArray = new Array(array.length).fill(0);
   let index = 0;
   let nodesVisited = 0;
   while (nodesVisited < array.length) {
