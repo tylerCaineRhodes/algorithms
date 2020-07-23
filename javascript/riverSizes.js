@@ -48,11 +48,13 @@ const getUnvisited = (row, col, matrix, aux) => {
   return unvisited;
 }
 
-let testMatrix1 = [
+const testMatrix1 = [
   [1, 0, 0, 1, 0],
   [1, 0, 1, 0, 0],
   [0, 0, 1, 0, 1],
   [1, 0, 1, 0, 1],
   [1, 0, 1, 1, 0],
 ];
+const testMatrix2 = [[1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0]];
 console.log(riverSizes(testMatrix1));
+console.log(riverSizes(testMatrix2));
