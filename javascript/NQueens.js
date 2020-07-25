@@ -1,14 +1,14 @@
 const solveNQueens = (n) => {
 
   const placeQueen = (row, col) => {
-    queens.add(row, col);
+    queens.add((row, col));
     cols[col] = 1;
     hills[row - col] = 1;
     dales[row + col] = 1;
   }
 
   const removeQueen = (row, col) => {
-    queens.delete(row, col)
+    queens.delete((row, col))
     cols[col] = 0;
     hills[row - col] = 0;
     dales[row + col] = 0;
@@ -32,12 +32,14 @@ const solveNQueens = (n) => {
     for (let i = 0; i < n - col - 1; i++) {
       str += '.';
     }
+    console.log(solution)
     solution.push(str);
+    console.log(solution)
   }
 
   const couldPlace = (row, col) => {
-    let bool = !(cols[col] + hills[row - col] + dales[row + col]);
-    return bool;
+    let bool = (!cols[col] && !hills[row - col] && !dales[row + col]);
+    return bool
   }
 
   const backtrack = (row = 0) => {
