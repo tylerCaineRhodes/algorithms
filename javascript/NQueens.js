@@ -1,4 +1,4 @@
-const solveNQueens = (n) => {
+const solveNQueensHardMode = (n) => {
 
   const placeQueen = (row, col) => {
     queens.add((row, col));
@@ -66,4 +66,30 @@ const solveNQueens = (n) => {
   return output;
 };
 
-console.log(solveNQueens(5))
+var solveNQueens = function (n) {
+  const result = [];
+  backtrack(result, n);
+  return result;
+};
+
+const areConflicts = (board, col_pos, currentRow) => {
+   return board.some((placedColVal, takenRow) => {
+    return placedColVal === col_pos || placedColVal === col_pos + currentRow - takenRow || placedColVal === col_pos - currentRow + takenRow
+  });
+};
+
+const backtrack = (result, n, board = [], currentRow = 0) => {
+  if (currentRow === n) {
+    result.push(board.map((placedColVal) => '.'.repeat(placedColVal) + 'Q' + '.'.repeat(n - placedColVal - 1)));
+    return;
+  }
+
+  for (let col_pos = 0; col_pos < n; col_pos++) {
+    if (!areConflicts(board, col_pos, currentRow)) {
+      board.push(col_pos);
+      backtrack(result, n, board, currentRow + 1);
+      board.pop();
+    }
+  }
+}
+console.log(solveNQueens(4))
