@@ -1,4 +1,4 @@
-const solveNQueensHardMode = (n) => {
+const solveNQueensI = (n) => {
 
   const placeQueen = (row, col) => {
     queens.add((row, col));
@@ -18,7 +18,6 @@ const solveNQueensHardMode = (n) => {
     solution = [];
     queens.forEach(col => {
       StringBuilder(col, solution)
-  
     })
     output.push(solution)
   }
@@ -32,29 +31,26 @@ const solveNQueensHardMode = (n) => {
     for (let i = 0; i < n - col - 1; i++) {
       str += '.';
     }
-    console.log(solution)
     solution.push(str);
-    console.log(solution)
   }
 
   const couldPlace = (row, col) => {
-    let bool = (!cols[col] && !hills[row - col] && !dales[row + col]);
-    return bool
+  return !cols[col] && !hills[row - col] && !dales[row + col];
   }
 
   const backtrack = (row = 0) => {
+    if(row === n){
+      addSolution();
+      return;
+    }
+
     for(let col = 0; col < n; col++){
       if(couldPlace(row, col)){
         placeQueen(row, col);
-        if(row + 1 === n){
-          addSolution();
-        } else {
-          backtrack(row + 1)
-        }
+        backtrack(row + 1)
         removeQueen();
       }
     }
-    return;
   }
   
   const cols = new Array(n);
@@ -66,7 +62,9 @@ const solveNQueensHardMode = (n) => {
   return output;
 };
 
-var solveNQueens = function (n) {
+console.log(solveNQueensI(4))
+
+var solveNQueensII = function (n) {
   const result = [];
   backtrack(result, n);
   return result;
@@ -92,4 +90,28 @@ const backtrack = (result, n, board = [], currentRow = 0) => {
     }
   }
 }
-console.log(solveNQueens(4))
+
+
+function solveNQueensIII(n, solutions = [], queens = [], row = 0) {
+  if (row === n) {
+    solutions.push(
+      queens.map((col) => '.'.repeat(col) + 'Q' + '.'.repeat(n - col - 1))
+    );
+    return;
+  }
+  for (let column = 0; column < n; column++) {
+    if (
+      !queens.some(
+        (queenCol, queenRow) =>
+          queenCol === column ||
+          queenCol === column + queenRow - row ||
+          queenCol === column - queenRow + row
+      )
+    ) {
+      queens.push(column);
+      solveNQueens(n, solutions, queens, row + 1);
+      queens.pop();
+    }
+  }
+  return solutions;
+}
