@@ -1,5 +1,4 @@
 const solveNQueensI = (n) => {
-
   const placeQueen = (row, col) => {
     queens.add((row, col));
     cols[col] = 1;
@@ -52,10 +51,8 @@ const solveNQueensI = (n) => {
       }
     }
   }
-  
   const cols = new Array(n);
-  const hills = new Array(2 * n - 1);
-  const dales = new Array(2 * n - 1);
+  const hills = dales = new Array(2 * n - 1);
   const queens = new Set();
   const output = [];
   backtrack();
