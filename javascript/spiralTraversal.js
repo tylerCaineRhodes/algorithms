@@ -1,7 +1,6 @@
 const spiralTraversal = (arr) => {
   let result = [];
   let minRow = 0, maxRow = arr.length - 1, minCol = 0; maxCol = arr[0].length - 1;
-  console.log(maxCol)
 
   while(minRow <= maxRow && minCol <= maxCol){
     for(let i = minCol; i <= maxCol; i++){

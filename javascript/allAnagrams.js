@@ -10,7 +10,7 @@ const allAnagrams = (string) => {
       iterate(resultString + remainderString[i], remainderString.slice(0, i) + remainderString.slice(i + 1));
     }
   })('', string);
-
+  
   anagramStorage.forEach(val => anagrams.push(val));
   return anagrams;
 };
