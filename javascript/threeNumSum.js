@@ -21,3 +21,5 @@ function threeNumberSum(array, targetSum) {
   }
   return triplets;
 }
+
+module.exports = { threeNumberSum }
