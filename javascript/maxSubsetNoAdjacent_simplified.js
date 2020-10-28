@@ -14,7 +14,6 @@ function maxSubsetSumNoAdjacent(array) {
   if (!array.length) return 0;
   //if array is length 1, return array[0]
   if (array.length === 1) return array[0];
-  
   //create a copy of the array and initialize as maxSums
   const maxSums = array.map((val) => 0);
   //set maxSum[0] to equal array[0]
