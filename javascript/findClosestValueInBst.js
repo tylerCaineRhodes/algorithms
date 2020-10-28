@@ -20,3 +20,19 @@ function findClosestValueInBst(tree, target) {
   traverse(tree);
 	return closest;
 };
+
+function findClosestValueInBstII(tree, target) {
+  let closest = tree.value;
+  let curr = tree;
+
+  while(curr) {
+    if(Math.abs(target - curr.value) < Math.abs(target - closest)) {
+      closest = curr.value;
+    } else if (curr.value > target) {
+      curr = curr.left;
+    } else {
+      curr = curr.right;
+    }
+  }
+  return closest;
+}
