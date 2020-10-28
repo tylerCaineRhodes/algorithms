@@ -10,6 +10,9 @@ const isAtEnd = (matrix, row, col) => {
 }
 
 const countPaths = (grid, row, col) => {
+  //base cases
+  //if square isn't valid, return 0
+  //if square is last square, return 1
   if (!isValidSquare(grid, row, col)) return 0;
   if (isAtEnd(grid, row, col)) return 1;
 
