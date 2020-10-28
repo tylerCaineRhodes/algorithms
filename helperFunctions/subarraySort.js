@@ -1,35 +1,38 @@
 function subarraySort(array) {
-  let minOOO = Infinity;
-  let maxOOO = -Infinity;
-
+  //init min and max number that is out of order
+  let min = Infinity;
+  let max = -Infinity;
+  //iterate over the array
   for (let i = 0; i < array.length; i++) {
-    let num = array[i];
-    if (isNotOrdered(array, i, num)) {
-      minOOO = Math.min(minOOO, num);
-      maxOOO = Math.max(maxOOO, num);
+    //check to see if num is out of order
+    if (isOutOfOrder(array, i)) {
+      //if it is, find min and max
+      min = Math.min(min, array[i]);
+      max = Math.max(max, array[i]);
     }
   }
-  if (minOOO === Infinity) {
+  //if no min or max, return [-1, -1]
+  if (min === Infinity) {
     return [-1, -1];
   }
-  let leftSubIndex = 0;
-  let rightSubIndex = array.length - 1;
-
-  while (minOOO >= array[leftSubIndex]) {
-    leftSubIndex++;
+  //set left index to place where in fits
+  let leftIndex = 0;
+  //place at index of first val that's larger
+  while (min >= array[leftIndex]) {
+    leftIndex++;
   }
-  while (maxOOO <= array[rightSubIndex]) {
-    rightSubIndex--;
+  //set right index to place where max fits
+  let rightIndex = array.length - 1;
+  //place at index of first val that's smaller
+  while (max <= array[rightIndex]) {
+    rightIndex--;
   }
-  return [leftSubIndex, rightSubIndex];
+  //return left index and right index
+  return [leftIndex, rightIndex];
 }
 
-function isNotOrdered(array, i, num) {
-  if (i === 0) {
-    return num > array[i + 1];
-  }
-  if (i === array.length - 1) {
-    return num < array[i - 1];
-  }
-  return num < array[i - 1] || num > array[i + 1];
+function isOutOfOrder(array, i) {
+  if (i === 0) return array[i] > array[i + 1];
+  if (i === array.length - 1) return array[i] < array[i - 1];
+  return array[i] > array[i + 1] || array[i] < array[i - 1];
 }
