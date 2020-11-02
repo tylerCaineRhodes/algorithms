@@ -1,8 +1,10 @@
 const isSorted = (arr) => {
-  let len = arr.length;
-  if (arr.length === 0 || arr.length === 1) return true;
+  const len = arr.length;
+  if (len === 0 || len === 1) return true;
+  
+  const lastValGreaterOrEqualToPrev = arr[len - 1] >= arr[len - 2]
 
-  if (arr[len - 1] >= arr[len - 2]) {
+  if (lastValGreaterOrEqualToPrev) {
     return isSorted(arr.slice(0, -1));
   } else {
     return false;

@@ -1,3 +1,9 @@
+//initialize aux array of n + 1, m + 1, filled with 0;
+//init result count variable
+//iterate over aux starting at 1, 1
+  //if matrix[r - 1][c - 1] is 0, take min of left diagonal, left, and upper neighbors and add 1. Add that resulting val to count
+//return count
+
 let countSquaresWMatrix = (matrix) => {
   let row_len = matrix.length;
   if (row_len === 0) return 0;
@@ -23,6 +29,7 @@ let countSquaresWMatrix = (matrix) => {
       }
     }
   }
+  console.log(answerMatrix)
   return sum;
 };
 
