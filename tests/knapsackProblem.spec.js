@@ -1,4 +1,4 @@
-const { knapsackProblem } = require('../Javascript/knapsackProblem');
+const { knapsackProblem } = require('../Javascript/dynamicProgramming/knapsackProblem');
 
 describe('knapsack problem', () => {
   it('returns indeces and maxValue of knapsacks', () => {

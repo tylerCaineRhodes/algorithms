@@ -26,7 +26,7 @@ const mergeSort = (array) => {
 
 //with helper function--------------------------------------------------
 
-const mergeSort = (array) => {
+const mergeSortII = (array) => {
   if (array.length <= 1) {
     return array;
   };
@@ -35,7 +35,7 @@ const mergeSort = (array) => {
   let left = array.slice(0, midpointIndex);
   let right = array.slice(midpointIndex);
 
-  return merge(mergeSort(left), mergeSort(right));
+  return merge(mergeSortII(left), mergeSortII(right));
 };
 
 
