@@ -1,3 +1,4 @@
+//O(n^2)
 function diskStacking(disks) {
 	//sort disks by height
 	disks.sort((a, b) => a[2] - b[2]);
@@ -20,7 +21,6 @@ function diskStacking(disks) {
 	const maxIdx = getMaxIdx(heights);
 	return buildSequence(disks, sequences, maxIdx)
 }
-
 
 function isStackable(currentDisk, otherDisk) {
 	const [currentWidth, currentDepth, currentHeight] = currentDisk;
@@ -47,5 +47,3 @@ function getMaxIdx(array) {
 	}
 	return max;
 }
-
-//O(n^2)
