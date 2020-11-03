@@ -6,24 +6,25 @@ class LinkedList {
 }
 
 function removeKthNodeFromEnd(head, k) {
-  let pointer = head,
-    disciple = head;
-  let increment = 1;
+  let leader = head;
+  let disciple = head;
+  let increment = 0;
 
-  while (pointer.next !== null) {
-    if (increment > k) {
-      pointer = pointer.next;
+  while (leader.next !== null) {
+    if (increment >= k) {
+      leader = leader.next;
       disciple = disciple.next;
       increment++;
       continue;
     }
-    pointer = pointer.next;
+    leader = leader.next;
     increment++;
   }
-  if (increment <= k) {
+  if (increment < k) {
     head.value = head.next.value;
     head.next = head.next.next;
   } else {
+    //deletes the node 
     disciple.next = disciple.next.next;
   }
 };

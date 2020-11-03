@@ -1,5 +1,4 @@
 const kthToLastNode = (k, head) => {
-
   let current = head, count = 0;
   while(current){
     count++;
@@ -12,6 +11,25 @@ const kthToLastNode = (k, head) => {
     increment++;
     if(increment === count - k) return current;
     current = current.next;
+  }
+  return null;
+}
+
+const kthLastNodeII = (k, head) => {
+  let lengthOfList = 0;
+  let curr = head;
+
+  while(curr) {
+    lengthOfList++;
+    curr = head.next;
+  }
+  curr = head;
+  let currentNodePosition = 0;
+
+  while(curr) {
+    currentNodePosition++;
+    if(currentNodePosition === lengthOfList - k) return curr;
+    curr = curr.next;
   }
   return null;
 }
