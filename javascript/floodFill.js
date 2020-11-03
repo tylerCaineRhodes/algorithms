@@ -73,8 +73,39 @@ var floodFillII = function (image, sr, sc, newColor) {
   return image;
 };
 
+var floodFillIII = function (image, sr, sc, newColor) {
+  if (image[sr][sc] === newColor) return image;
+  let oldColor = image[sr][sc];
+
+  const changeColor = (row, col) => {
+    if(image[row][col] !== oldColor) return;
+    
+    if (image[row][col] === oldColor) {
+      image[row][col] = newColor;
+    }
+    //check left of coordinate
+    if (col > 0) {
+      changeColor(row, col - 1);
+    }
+    //check above of coordinate
+    if (row > 0) {
+      changeColor(row - 1, col);
+    }
+    //check right of coordinate
+    if (col < image[0].length - 1) {
+      changeColor(row, col + 1);
+    }
+    //check below coordinate
+    if (row < image.length - 1) {
+      changeColor(row + 1, col);
+    }
+  };
+  changeColor(sr, sc);
+  return image;
+};
+
 console.log(
-  floodFill(
+  floodFillIII(
     [
       [1, 1, 1],
       [1, 1, 0],
