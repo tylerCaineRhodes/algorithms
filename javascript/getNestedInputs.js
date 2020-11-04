@@ -6,8 +6,11 @@ const getValues = (inputObjects) => {
     let curr = root;
 
     for (let i = 0; i < classes.length - 1; i++) {
-      curr[classes[i]] = curr[classes[i]] || {};
-      curr = curr[classes[i]];
+      let currentClassName = classes[i];
+      if(curr[currentClassName] === undefined) {
+        curr[currentClassName] = {};
+      }
+      curr = curr[currentClassName];
     }
     curr[classes[classes.length - 1]] = obj['value'];
   });
