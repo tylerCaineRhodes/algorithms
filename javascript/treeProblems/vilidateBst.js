@@ -21,8 +21,6 @@ const test = bfsInsertion(new Node(), [
 function validateBst(tree) {
   let arr = [];
   const checkInOrder = (tree) => {
-    if (!tree) return;
-
     if (tree.left) {
       checkInOrder(tree.left);
     }
@@ -33,9 +31,23 @@ function validateBst(tree) {
     }
   };
   checkInOrder(tree);
-  arr =arr.filter(val => val !== null)
+  arr = arr.filter(val => val !== null)
+  return isSorted(arr);
+}
+
+function validateBstI(tree) {
+  let arr = [];
+  const checkInOrder = (tree) => {
+    if (!tree) return;
+
+    checkInOrder(tree.left);
+    arr.push(tree.value);
+    checkInOrder(tree.right);
+  };
+  checkInOrder(tree);
+  arr = arr.filter(val => val !== null)
   return isSorted(arr);
 }
 
 console.log(validateBst(test))
-
+console.log(validateBstI(test))
