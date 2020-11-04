@@ -6,7 +6,7 @@ const getValues = (inputObjects) => {
     let curr = root;
 
     for (let i = 0; i < classes.length - 1; i++) {
-      let currentClassName = classes[i];
+      const currentClassName = classes[i];
       if(curr[currentClassName] === undefined) {
         curr[currentClassName] = {};
       }
