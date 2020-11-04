@@ -1,13 +1,16 @@
 class MinHeap {
   constructor(arr) {
     this.heap = arr || [];
-  }
+  };
+
   getMin = () => {
     return this.heap[0];
   };
+
   swapsies = (index1, index2) => {
     [this.heap[index1], this.heap[index2]] = [this.heap[index2], this.heap[index1]];
   };
+
   insert = (node) => {
     //push to bottom of heap
     this.heap.push(node);
@@ -28,8 +31,8 @@ class MinHeap {
 
   getKthSmallest = (k) => {
     if (k > this.heap.length - 1) return null;
-    //make immutable
-    let copyArr = this.heap.slice(), copyHeap = new MinHeap(copyArr);
+    let copyArr = this.heap.slice();
+    let copyHeap = new MinHeap(copyArr);
     for (let i = 1; i < k; i++) {
       copyHeap.remove();
     }
@@ -58,7 +61,6 @@ class MinHeap {
       } else {
         indexToSwap = leftChildIndex;
       }
-
       if(this.heap[currentIndex] < this.heap[indexToSwap]) {
         this.swapsies(currentIndex, indexToSwap);
         currentIndex = indexToSwap;
