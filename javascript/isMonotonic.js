@@ -1,5 +1,4 @@
 function isMonotonic(array) {
-  // Write your code here.
   let diffType;
   let currDiffType;
   let declared = false;
@@ -8,13 +7,11 @@ function isMonotonic(array) {
       if (array[i] === array[i + 1]) continue for1;
       if (array[i] < array[i + 1]) {
         diffType = 'pos';
-        declared = true;
-        break while1;
       } else {
         diffType = 'neg';
-        declared = true;
-        break while1;
       }
+      declared = true;
+      break while1;
     }
     if (array[i] === array[i + 1]) continue for1;
     if (array[i] < array[i + 1]) {
