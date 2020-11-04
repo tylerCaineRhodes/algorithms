@@ -42,7 +42,7 @@ function climbStairsIII(n) {
   const numberOfSteps = new Array(n).fill(0);
  [numberOfSteps[0], numberOfSteps[1]] = [1, 2];
 
- for(let i = 3; i < numberOfSteps.length; i++) {
+ for(let i = 2; i < numberOfSteps.length; i++) {
   numberOfSteps[i] = numberOfSteps[i - 1] + numberOfSteps[i  - 2];
  }
  return numberOfSteps[numberOfSteps.length - 1]
