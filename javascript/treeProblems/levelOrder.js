@@ -4,7 +4,7 @@ var levelOrder = function (root) {
   //if no root, return empty array
   if (!root) return levels;
 
-  const findLevelOrders = (node, index = 0) => {
+  const findLevelOrders = (node, index) => {
     //if currentIndex is equal to the length of levels, initialize empty array
     if (index === levels.length) {
       levels.push([]);
@@ -15,12 +15,11 @@ var levelOrder = function (root) {
     if (node.left) {
       findLevelOrders(node.left, index + 1);
     }
-
     if (node.right) {
       findLevelOrders(node.right, index + 1);
     }
   };
-  findLevelOrders(root);
+  findLevelOrders(root, 0);
   return levels;
 };
 
@@ -32,9 +31,9 @@ function levelOrderIterative(root) {
 
   while(queue.length) {
     levels.push([]);
-    const levelLength = queue.length;
+    const numberOfChildrenAtLevel = queue.length;
 
-    for(let i = 0; i < levelLength; i++) {
+    for(let i = 0; i < numberOfChildrenAtLevel; i++) {
       const node = queue.shift();
       levels[index].push(node.val);
 
@@ -48,4 +47,24 @@ function levelOrderIterative(root) {
     index++;
   }
   return levels;
+}
+
+
+function levelOrder(root) {
+  if (!root) return [];
+
+  const levels = [];
+  getLevelOrder(root, 0, levels);
+  return levels;
+}
+
+function getLevelOrder(node, index, levels) {
+  if (!node) return;
+
+  if (index === levels.length) {
+    levels.push([]);
+  }
+  levels[index].push(node.val);
+  getLevelOrder(node.left, index + 1, levels);
+  getLevelOrder(node.right, index + 1, levels);
 }
