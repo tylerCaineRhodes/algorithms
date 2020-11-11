@@ -1,5 +1,7 @@
 var checkInclusion = function (s1, s2) {
-  let library1 = archive(s1), s1_len = s1.length, s2_len = s2.length;
+  const library1 = archive(s1);
+  const s1_len = s1.length;
+  const s2_len = s2.length;
 
   for(let i = 0; i <= s2_len - s1_len; i++){
     let sliceyBoy = s2.slice(i, i + s1_len);
