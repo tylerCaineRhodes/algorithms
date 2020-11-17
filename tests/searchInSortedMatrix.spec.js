@@ -1,4 +1,4 @@
-const { searchInSortedMatrix } = require('../Javascript/searchInSortedMatrix');
+const { searchInSortedMatrix } = require('../Javascript/searchInSortedMatrix.js');
 
 const test1 = {
   "matrix": [

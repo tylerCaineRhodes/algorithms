@@ -1,5 +1,5 @@
 const { LL } = require('../dataStructures/indexedLL');
-const remove = require('../Javascript/removeKthToLastNode');
+const remove = require('../Javascript/linkedListProblems/removeKthToLastNode');
 
 describe('remove kth to last node from a linked list', () => {
   let linkedlist;

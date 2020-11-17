@@ -1,4 +1,4 @@
-const { wordCloud } = require('../javascript/wordCloud.js');
+const { wordCloud } = require('../Javascript/wordCloud.js');
 
 describe('wordCloud', () => {
   let testString ='After beating the eggs, Dana read the next step:Add milk and eggs, then add flour and sugar.',

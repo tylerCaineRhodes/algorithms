@@ -1,49 +1,40 @@
 function shortestPathBinaryMatrix(grid) {
-  const firstValueIsOne = grid[0][0] === 1;
-  const lastValueIsOne = grid[grid.length - 1][grid[0].length - 1] === 1;
-  if (firstValueIsOne || lastValueIsOne) return -1;
-  
-  const visitedMatrix = createAuxMatrix(grid);
-  const neighborCoordinateOffsets = [[0, -1],[-1, -1],[-1, 0],[-1, -1],[0, 1],[1, 1],[1, 0],[1, -1]];
-  const queue = [[0, 0, 1]];
-  visitedMatrix[0][0] = true;
+  if(grid[0][0] !== 0 || grid[grid.length - 1][grid[0].length - 1] !== 0) return -1;
 
-  while (queue.length) {
-    const numberOfTraverseableNeighbors = queue.length;
-    for (let i = 0; i < numberOfTraverseableNeighbors; i++) {
-      const [row, col, path] = queue.shift();
-      if (row === grid.length - 1 && col === grid[0].length - 1) {
-        return path;
-      }
+  const queue = [[0, 0]];
+  grid[0][0] = 1;
+  let distance;
 
-      for (let j = 0; j < neighborCoordinateOffsets.length; j++) {
-        const [offsetRow, offsetCol] = neighborCoordinateOffsets[j];
-        const newRow = row + offsetRow;
-        const newCol = col + offsetCol;
+  while(queue.length) {
+    const [row, col] = queue.shift();
+    distance = grid[row][col];
+    if(row === grid.length - 1 && col ===grid[0].length - 1) return distance;
 
-        if (canTraverse(newRow, newCol, grid, visitedMatrix)) {
-          visitedMatrix[newRow][newCol] = true;
-          queue.push([newRow, newCol, path + 1]);
-        } else {
-          continue;
-        }
-      }
+    const unvisitedNeighbors = getNeighbors(row, col, grid);
+
+    for(const [newRow, newCol] of unvisitedNeighbors) {
+      grid[newRow][newCol] = distance + 1;
+      queue.push([newRow, newCol])
     }
   }
-  return -1;
+  return -1
+
 }
 
-function createAuxMatrix(grid) {
-  const newMatrix = grid.map((row) => row.map((val) => false));
-  return newMatrix;
-}
+function getNeighbors(row, col, grid) {
+  const directions = [[-1, -1],[-1, 0],[-1, 1],[0, -1],[0, 1],[1, -1],[1, 0],[1, 1]];
+  const unvisitedNeighbors = [];
 
-function canTraverse(row, col, matrix, visited) {
-  if (row < 0 || col < 0 || row >= matrix.length || col >= matrix[0].length) {
-    return false;
-  } else if (matrix[row][col] === 1 || visited[row][col] === true) {
-    return false;
-  } else {
-    return true;
+  for (let [rowDiff, colDiff] of directions) {
+    const newRow = row + rowDiff;
+    const newCol = col + colDiff;
+
+    if (newRow < 0 || newCol < 0 || newRow > grid.length - 1 || newCol > grid[0].length - 1) continue;
+    if(grid[newRow][newCol] !== 0) continue;
+
+    unvisitedNeighbors.push([newRow, newCol]);
   }
+  return unvisitedNeighbors;
 }
+
+module.exports =  { shortestPathBinaryMatrix };

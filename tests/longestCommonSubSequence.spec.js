@@ -1,4 +1,4 @@
-const { longestCommonSubsequence } = require('../Javascript/longestCommonSubsequence');
+const { longestCommonSubsequence } = require('../Javascript/dynamicProgramming/longestCommonSubsequence');
 
 describe('longest common subsequence', () => {
   it('handles empty strings', () => {

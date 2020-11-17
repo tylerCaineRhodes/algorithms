@@ -6,7 +6,7 @@ const {
   normalDF_Print,
 } = require('../helperFunctions/binaryTreeMethods.js');
 
-const { invertTree } = require('../javascript/invertBST.js');
+const { invertTree } = require('../javascript/treeProblems/invertBST.js');
 
 describe('invertBST', () => {
   let tree;

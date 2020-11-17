@@ -1,4 +1,4 @@
-const { myAtoi } = require('../javascript/stringToInteger.js');
+const { myAtoi } = require('../Javascript/stringToInteger.js');
 
 describe('myAtoi', () => {
   it('should parse a regular string into a number', () => {
