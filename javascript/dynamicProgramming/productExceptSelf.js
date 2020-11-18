@@ -5,7 +5,7 @@ var productExceptSelf = function(nums) {
   const right = new Array(len);
   left[0] = 1;
   right[len - 1] = 1;
-
+  
   for(let i = 1; i < len; i++) {
     left[i] = nums[i - 1] * left[i - 1]
   }
