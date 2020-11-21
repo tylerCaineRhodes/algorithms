@@ -6,12 +6,9 @@ function getNumberOfClimbs(step, n) {
   const stepIsOutOfBounds = step > n;
   const isAtLastStep = step === n;
 
-  if (stepIsOutOfBounds) {
-    return 0;
-  }
-  if(isAtLastStep) {
-    return 1;
-  }
+  if (stepIsOutOfBounds) return 0;
+  if(isAtLastStep) return 1
+  
   return getNumberOfClimbs(step + 1, n) + getNumberOfClimbs(step + 2, n);
 }
 
