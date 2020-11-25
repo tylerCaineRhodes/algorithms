@@ -26,17 +26,16 @@ function dijkstrasAlgorithm(start, edges) {
 }
 
 function getVertexWithMinDistance(distances, visited) {
-  //ini currentMinDistance and vertex
   let currentMinDistance = Infinity;
   let vertex = -1;
 
-  for (let vertexIdx = 0; vertexIdx < distances.length; vertexIdx++) {
-    const distance = distances[vertexIdx];
+  for (let i = 0; i < distances.length; i++) {
+    const distance = distances[i];
 
-    if (vertexIdx in visited) continue;
+    if (i in visited) continue;
     
     if (distance <= currentMinDistance) {
-      vertex = vertexIdx;
+      vertex = i;
       currentMinDistance = distance;
     }
   }
