@@ -10,7 +10,8 @@ const {
 const {
   Node,
   bfsInsertion,
-  BFS_Print
+  BFS_Print,
+  sortedArrayToBST
 } = require('../helperFunctions/binaryTreeMethods');
 
 describe('Node bfs insert method', () => {
@@ -48,5 +49,16 @@ describe('traversalOrder functions', () => {
   it('uses postorder traversal to print the tree', () => {
     expect(DF_POSTORDER_PRINT(tree)).toStrictEqual([4, 5, 2, 6, 7, 3, 1]);
     expect(DF_POSTORDER_PRINT_SD(tree)).toStrictEqual([4, 5, 2, 6, 7, 3, 1]);
+  });
+});
+
+describe('sorted array to BST', () => {
+  it('should create a ballanced BST from a sorted array', () => {
+    const sortedArray = [1, 2, 3, 4, 5, 6, 7];
+    const tree = sortedArrayToBST(sortedArray, 0, sortedArray.length - 1)
+    expect(BFS_Print(tree)).toStrictEqual([4, 2, 6, 1, 3, 5, 7]);
+    expect(DF_INORDER_PRINT(tree)).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
+    expect(DF_PREORDER_PRINT(tree)).toStrictEqual([4, 2, 1, 3, 6, 5, 7]);
+    expect(DF_POSTORDER_PRINT(tree)).toStrictEqual([1, 3, 2, 5, 7, 6, 4]);
   });
 });

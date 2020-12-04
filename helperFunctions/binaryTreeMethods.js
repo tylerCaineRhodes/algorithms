@@ -26,17 +26,29 @@ class Node {
 };
 
 const bfsInsertion = (node, arr, index) => {
-  if (arr.length > index) {
-    let current = new Node(arr[index]);
-    node = current;
+  if (index >= arr.length) return node;
 
-    node.left = bfsInsertion(node.left, arr, 2 * index + 1);
-    node.right = bfsInsertion(node.right, arr, 2 * index + 2);
-  }
+  let current = new Node(arr[index]);
+  node = current;
+
+  node.left = bfsInsertion(node.left, arr, 2 * index + 1);
+  node.right = bfsInsertion(node.right, arr, 2 * index + 2);
+
   return node;
 };
 
-const BFS_Print = (node) => {
+const sortedArrayToBST = (arr, start, end) => {
+  if(start > end) return;
+
+  let mid = Math.floor((start + end) / 2);
+  const root = new Node(arr[mid]);
+
+  root.left = sortedArrayToBST(arr, start, mid - 1);
+  root.right = sortedArrayToBST(arr, mid + 1, end);
+  return root;
+}
+
+function BFS_Print(node) {
   let collection = [node];
   let seen = [];
 
@@ -52,7 +64,7 @@ const BFS_Print = (node) => {
     };
   };
   return seen;
-};
+}
 
 const DFS_Print = (node) => {
   let collection = [node];
@@ -94,5 +106,6 @@ module.exports = {
   bfsInsertion,
   BFS_Print,
   DFS_Print,
-  normalDF_Print
+  normalDF_Print,
+  sortedArrayToBST
 };
