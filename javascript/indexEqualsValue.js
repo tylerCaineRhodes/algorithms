@@ -38,4 +38,3 @@ function indexEqualsValue(array) {
   }
   return -1;
 }
-
