@@ -28,4 +28,20 @@ let grid = [
   [1, 1, 0, 0],
 ];
 
+var islandPerimeter = function (grid) {
+  const seen = grid.map((row) => row.map((val) => false));
+  let result = 0;
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      if (grid[i][j] === 0) continue;
+      if (seen[i][j]) continue;
+      seen[i][j] = true;
+      result += 4;
+      if (i > 0 && grid[i - 1][j] === 1) result -= 2;
+      if (j > 0 && grid[i][j - 1] === 1) result -= 2;
+    }
+  }
+  return result;
+};
+
 console.log(islandPerimeter(grid));
