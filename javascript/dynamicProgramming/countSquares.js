@@ -33,7 +33,11 @@ let countSquaresWMatrix = (matrix) => {
   return sum;
 };
 
-let Input = [[1,0,1,0,0],[1,0,1,1,1],[1,1,1,1,1],[1,0,0,1,0]]
+let Input = [
+  [1,0,1,0,0],
+  [1,0,1,1,1],
+  [1,1,1,1,1],
+  [1,0,0,1,0]]
 
 
 console.log(countSquaresWMatrix(Input))

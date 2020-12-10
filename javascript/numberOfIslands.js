@@ -37,7 +37,7 @@ function traverse(i, j, grid) {
   while (queue.length) {
     const [i, j] = queue.shift();
 
-    const neighbors = getNeighbors(i, j, grid);
+    const neighbors = getNeighborsII(i, j, grid);
     for (const [row, col] of neighbors) {
       grid[row][col] = '0';
       queue.push([row, col]);
