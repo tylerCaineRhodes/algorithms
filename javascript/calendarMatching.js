@@ -13,14 +13,8 @@ function calendarMatching(
 }
 
 function updateCalendar(calendar, dailyBounds) {
-  const updatedCalendar = [
-    ['0:00', dailyBounds[0]],
-    ...calendar.slice(),
-    [dailyBounds[1], '23:59'],
-  ];
-  return updatedCalendar.map((meeting) =>
-    meeting.map((time) => timeToMinutes(time))
-  );
+  const updatedCalendar = [['0:00', dailyBounds[0]],...calendar.slice(), [dailyBounds[1], '23:59']];
+  return updatedCalendar.map((meeting) => meeting.map((time) => timeToMinutes(time)));
 }
 
 function timeToMinutes(time) {
@@ -57,10 +51,7 @@ function flattenCalendar(calendar) {
     const [currentStart, currentEnd] = currentMeeting;
     const [previousStart, previousEnd] = previousMeeting;
     if (previousEnd >= currentStart) {
-      const newPreviousMeeting = [
-        previousStart,
-        Math.max(previousEnd, currentEnd),
-      ];
+      const newPreviousMeeting = [previousStart, Math.max(previousEnd, currentEnd)];
       flattened[flattened.length - 1] = newPreviousMeeting;
     } else {
       flattened.push(currentMeeting.slice());

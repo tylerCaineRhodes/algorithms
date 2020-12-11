@@ -1,7 +1,7 @@
 function fillTerrain(array) {
   const largestNum = findLargestNum(array);
   const matrix = new Array(largestNum + 1).fill('').map((val) => new Array(array.length + 2).fill(' '));
-
+  
   for (let i = 0; i < array.length; i++) {
     const val = array[i];
     for (let row = 0; row < matrix.length; row++) {
