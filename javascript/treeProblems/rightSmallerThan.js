@@ -25,12 +25,7 @@ class SpecialBST {
         this.left = new SpecialBST(value);
         rightSmallerCounts[idx] = numSmallerAtInsertTime;
       } else {
-        this.left.insert(
-          value,
-          idx,
-          rightSmallerCounts,
-          numSmallerAtInsertTime
-        );
+        this.left.insert(value, idx, rightSmallerCounts, numSmallerAtInsertTime);
       }
     } else {
       numSmallerAtInsertTime += this.leftSubtreeSize;
@@ -40,12 +35,7 @@ class SpecialBST {
         this.right = new SpecialBST(value);
         rightSmallerCounts[idx] = numSmallerAtInsertTime;
       } else {
-        this.right.insert(
-          value,
-          idx,
-          rightSmallerCounts,
-          numSmallerAtInsertTime
-        );
+        this.right.insert(value, idx, rightSmallerCounts, numSmallerAtInsertTime);
       }
     }
   }
