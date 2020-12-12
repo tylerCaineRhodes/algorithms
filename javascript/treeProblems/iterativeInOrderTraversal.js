@@ -1,3 +1,12 @@
+class Tree {
+  constructor(value) {
+    this.value = value;
+    this.parent = null;
+    this.left = null;
+    this.right = null;
+  }
+}
+
 function iterativeInOrderTraversal(tree, callback) {
   let previous = null;
   let curr = tree;
