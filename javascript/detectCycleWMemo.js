@@ -1,5 +1,5 @@
 var detectCycleWMemo = function (head) {
-  let collection = new Set();
+  const collection = new Set();
   let current = head;
 
   while (current) {
@@ -11,3 +11,4 @@ var detectCycleWMemo = function (head) {
   }
   return null;
 };
+

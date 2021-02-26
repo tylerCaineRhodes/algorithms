@@ -1,9 +1,12 @@
 function longestStringChain(strings) {
   const stringChains = {};
-  for (const string of strings)
-    stringChains[string] = { nextString: '', maxChainLength: 1 };
+  for (const string of strings) {
+    stringChains[string] = { 
+      nextString: '', 
+      maxChainLength: 1 
+    }
+  }
   const sortedStrings = strings.sort((a, b) => a.length - b.length);
-
   for (string of sortedStrings) {
     findLongestStringChain(string, stringChains);
   }
