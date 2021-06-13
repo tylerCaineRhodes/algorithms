@@ -22,7 +22,7 @@ function invertBinaryTree(tree) {
   return tree;
 }
 
-function invertBinaryTree(tree) {
+function invertBinaryTreeI(tree) {
   if (!tree) return;
   [tree.left, tree.right] = [tree.right, tree.left];
   invertBinaryTree(tree.left);
