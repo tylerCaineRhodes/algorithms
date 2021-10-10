@@ -5,7 +5,7 @@ function RPS_BACKTRACK(n) {
   return result;
 }
 
-const backtrack = (selection, str, n, result) => {
+function backtrack(selection, str, n, result) {
   if (str.length === n) {
     result.push(str.slice());
     return;
