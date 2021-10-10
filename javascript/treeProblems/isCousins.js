@@ -1,31 +1,25 @@
-var isCousins = function (root, x, y) {
-  if (root === null) {
-    return false;
-  };
+function isCousins(root, x, y) {
+  if (!root) return false;
 
   let xData = [], yData = [];
   let depth = 0;
   let parent = null;
 
-  const getTargetInfo = (root, x, y, depth, parent) => {
-    if (root === null) {
-      return;
-    };
+  function getTargetInfo(root, x, y, depth, parent) {
+    if(!root) return;
 
-    if (root.value === x) {
-      xData = xData.concat([depth, parent]);
-    };
-
-    if (root.value === y) {
-      yData = yData.concat([depth, parent]);
-    };
+    if (root.value === x) xData = [depth, parent];
+    if (root.value === y)  yData = [depth, parent];
 
     getTargetInfo(root.left, x, y, depth + 1, root);
     getTargetInfo(root.right, x, y, depth + 1, root);
   };
   getTargetInfo(root, x, y, depth, parent);
 
-  return xData[0] === yData[0] && xData[1] !== yData[1];
+  const [xDepth, xParent] = xData;
+  const [yDepth, yParent] = yData;
+
+  return xDepth === yDepth && xParent !== yParent;
 };
 
 module.exports = { isCousins };
