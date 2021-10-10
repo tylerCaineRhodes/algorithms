@@ -18,9 +18,7 @@ describe('isCousins', () => {
     console.log(DFS_Print(rootTest1))
     console.log(BFS_Print(rootTest1))
     expect(isCousins(rootTest1, 4, 3)).toBe(false);
-  });
-  
-  xit('case: root = [1,2,3, null, 4, null, 5], x = 5, y = 4, ouput: true', () => {
+  });  it('case: root = [1,2,3, null, 4, null, 5], x = 5, y = 4, ouput: true', () => {
     let rootTest2 = bfsInsertion(test, [1, 2, 3, null, 4, null, 5], 0);
     expect(isCousins(rootTest2, 5, 4)).toBe(true); //should be true
      console.log(DFS_Print(rootTest2));

@@ -3,21 +3,20 @@ var isCousins = function (root, x, y) {
     return false;
   };
 
-  let xData = [],
-    yData = [],
-    depth = 0,
-    parent = null;
+  let xData = [], yData = [];
+  let depth = 0;
+  let parent = null;
 
   const getTargetInfo = (root, x, y, depth, parent) => {
     if (root === null) {
       return;
     };
 
-    if (root.val === x) {
+    if (root.value === x) {
       xData = xData.concat([depth, parent]);
     };
 
-    if (root.val === y) {
+    if (root.value === y) {
       yData = yData.concat([depth, parent]);
     };
 
