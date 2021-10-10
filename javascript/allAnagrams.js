@@ -15,4 +15,22 @@ const allAnagrams = (string) => {
   return anagrams;
 };
 
+function RPS(string) {
+  const result = [];
+
+  function iterate(currentPermutation) {
+    if (currentPermutation.length === string.length) {
+      result.push(currentPermutation);
+      return;
+    }
+
+    for (let i = 0; i < string.length; i++) {
+      iterate(currentPermutation + string[i]);
+    }
+  }
+  iterate('');
+  return result;
+
+}
+console.log(RPS('abc'));
 console.log(allAnagrams('abc'));
