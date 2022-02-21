@@ -1,5 +1,5 @@
-const { LL } = require('../dataStructures/indexedLL');
-const remove = require('../Javascript/linkedListProblems/removeKthToLastNode');
+import { LL } from '../src/dataStructures/indexedLL';
+import remove from '../src/linkedListProblems/removeKthToLastNode';
 
 describe('remove kth to last node from a linked list', () => {
   let linkedlist;

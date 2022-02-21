@@ -1,4 +1,4 @@
-const { canConstruct } = require('../javascript/ransomNote.js');
+import { canConstruct } from '../src/ransomNote.js';
 
 describe('Ransom Note', () => {
   it('returns expected boolean value', () => {

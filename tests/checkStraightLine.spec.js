@@ -1,4 +1,4 @@
-const { checkStraightLine } = require('../javascript/checkStraightLine.js');
+import { checkStraightLine } from '../src/checkStraightLine.js';
 
 describe('check straight line', () => {
   it('returns true if colinear', () => {

@@ -1,4 +1,4 @@
-const { Queue } = require('../Javascript/QueueWithTwoStacks.js');
+import { Queue } from '../src/QueueWithTwoStacks.js';
 
 describe('Queue', () => {
   let queue;

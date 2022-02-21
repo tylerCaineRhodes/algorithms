@@ -1,25 +1,25 @@
-const {
+import {
   DF_PREORDER_PRINT,
   DF_INORDER_PRINT,
   DF_POSTORDER_PRINT,
   DF_PREORDER_PRINT_SD,
   DF_INORDER_PRINT_SD,
   DF_POSTORDER_PRINT_SD
-} = require('../dataStructures/traversalOrder');
+} from '../src/dataStructures/traversalOrder';
 
-const {
+import {
   Node,
   bfsInsertion,
   BFS_Print,
   sortedArrayToBST
-} = require('../helperFunctions/binaryTreeMethods');
+} from '../src/helperFunctions/binaryTreeMethods';
 
 describe('Node bfs insert method', () => {
   it('should create a new tree in BFS order', () => {
     let test = new Node(1);
     for (let i = 2; i < 8; i++) {
       test.insert(i)
-    };
+    }
     expect(BFS_Print(test)).toStrictEqual([1, 2, 3, 4, 5, 6, 7])
   });
 });

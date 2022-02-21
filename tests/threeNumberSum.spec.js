@@ -1,4 +1,4 @@
-const { threeNumberSum } = require('../javascript/threeNumSum.js');
+import { threeNumberSum } from '../src/threeNumSum.js';
 
 describe('three number sum', () => {
   it('should return expected tripets', () => {

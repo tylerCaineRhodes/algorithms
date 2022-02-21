@@ -1,4 +1,4 @@
-const { longestPeak } = require('../Javascript/longestPeak');
+import { longestPeak } from '../src/longestPeak';
 
 describe('longestpeak', () => {
   it('returns longest peak of two', () => {

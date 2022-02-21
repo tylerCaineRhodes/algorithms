@@ -1,4 +1,4 @@
-const { myAtoi } = require('../Javascript/stringToInteger.js');
+import { myAtoi } from '../src/stringToInteger.js';
 
 describe('myAtoi', () => {
   it('should parse a regular string into a number', () => {
@@ -18,8 +18,8 @@ describe('myAtoi', () => {
     expect(myAtoi('++42')).toBe(0);
     expect(myAtoi('+-42')).toBe(0);
   });
-  
-  it('should return zero if first non-white character isn\'t numerical', () => {
+
+  it("should return zero if first non-white character isn't numerical", () => {
     expect(myAtoi('words and 987')).toBe(0);
   });
 

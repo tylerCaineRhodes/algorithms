@@ -1,4 +1,4 @@
-const { mergeRanges } = require('../javascript/mergeRange.js');
+import { mergeRanges } from '../src/mergeRange.js';
 
 describe('mergeRanges', () => {
   const input = [

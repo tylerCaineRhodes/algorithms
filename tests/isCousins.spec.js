@@ -1,11 +1,11 @@
-const { isCousins } = require('../javascript/treeProblems/isCousins.js');
-const {
+import { isCousins } from '../src/treeProblems/isCousins.js';
+
+import {
   Node,
   BFS_Print,
   DFS_Print,
   bfsInsertion,
-} = require('../helperFunctions/binaryTreeMethods.js');
-
+} from '../src/helperFunctions/binaryTreeMethods.js';
 
 describe('isCousins', () => {
   let test;

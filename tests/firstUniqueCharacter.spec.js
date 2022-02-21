@@ -1,4 +1,4 @@
-const { firstUniqChar } = require('../javascript/firstUniqueCharacter.js');
+import { firstUniqChar } from '../src/firstUniqueCharacter.js';
 
 describe('firstUniqueChar', () => {
   it('acts as expected', () => {

@@ -1,4 +1,4 @@
-const { majorityElement } = require('../javascript/majorityElement.js');
+import { majorityElement } from '../src/majorityElement.js';
 
 describe('majority element', () => {
   it('returns the number in array that appears more than n/2 times', () => {

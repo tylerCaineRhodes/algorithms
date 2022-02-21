@@ -1,4 +1,4 @@
-const { hasSingleCycle, hasSingleCycle_AuxArray } = require('../Javascript/hasSingleCycle');
+import { hasSingleCycle, hasSingleCycle_AuxArray } from '../src/hasSingleCycle';
 
 describe('has single cycle', () => {
   it('should return true for an array representing a single cycle', () => {

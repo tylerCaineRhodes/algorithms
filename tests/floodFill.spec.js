@@ -1,4 +1,4 @@
-const { floodFill } = require('../javascript/floodFill.js');
+import { floodFill } from '../src/floodFill.js';
 
 describe('floodFill', () => {
   it('should recursively change anything that has original value that is surrounding coordinates', () => {

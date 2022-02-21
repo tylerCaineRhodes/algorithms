@@ -1,4 +1,4 @@
-const { findJudge } = require('../javascript/findJudge.js');
+import { findJudge } from '../src/findJudge.js';
 
 describe('find judge', () => {
   it('returns -1 when there is no judge', () => {

@@ -1,4 +1,4 @@
-const { shortestPathBinaryMatrix } = require('../Javascript/shortestPathInBinaryMatrix.js');
+import { shortestPathBinaryMatrix } from '../src/shortestPathInBinaryMatrix.js';
 
 describe('shortest path in binary matrix', () => {
   it('returns shortest path for valid inputs', () => {

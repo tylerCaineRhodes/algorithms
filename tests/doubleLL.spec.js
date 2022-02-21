@@ -1,4 +1,4 @@
-const { DoublyLinkedList, Node } = require('../dataStructures/doubleLL');
+import { DoublyLinkedList, Node } from '../src/dataStructures/doubleLL';
 
 const printListVals = (head) => {
   let results = [], curr = head; 

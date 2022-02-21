@@ -1,4 +1,4 @@
-const { checkInclusion } = require('../javascript/checkInclusion.js');
+import { checkInclusion } from '../src/checkInclusion.js';
 
 describe('check Inclusion', () => {
   it('returns false if contains letter but isn\'t an anagram', () => {

@@ -1,12 +1,12 @@
-const {
+import {
   BFS_Print,
   DFS_Print,
   Node,
   bfsInsertion,
   normalDF_Print,
-} = require('../helperFunctions/binaryTreeMethods.js');
+} from '../src/helperFunctions/binaryTreeMethods.js';
 
-const { invertTree } = require('../javascript/treeProblems/invertBST.js');
+import { invertTree } from '../src/treeProblems/invertBST.js';
 
 describe('invertBST', () => {
   let tree;
