@@ -18,7 +18,6 @@ export function validStartingCity(
       currentCityIdx++
     ) {
       if (gasLeft < 0) continue inner;
-
       const actualIdx = currentCityIdx % numberOfCities;
       const currentDistance = distances[actualIdx];
       const currentFuel = fuel[actualIdx];
