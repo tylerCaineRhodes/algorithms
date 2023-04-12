@@ -1,3 +1,17 @@
+/*
+  The same problem as ./permutataionInString, except the input is reversed.
+    s2 = str
+    s1 = pattern
+
+    1. find the length of the pattern (s1)
+    2. iterate over the string (s2) as long as it's the length of the string - the length of the pattern
+    3. get the substring of length of the pattern (s1)
+    4. compare the substring to the pattern (s1) with a hash
+
+  https://leetcode.com/problems/permutation-in-string/
+*/
+
+// O(n * m) brute force
 export var checkInclusion = function (s1, s2) {
   const library1 = archive(s1);
   const s1_len = s1.length;
