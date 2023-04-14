@@ -1,57 +1,120 @@
-//normy solution
-const mergeSort = (array) => {
+function mergeSort(array) {
   if (array.length < 2) {
     return array;
   }
-  let midpointIndex = Math.floor(array.length / 2);
 
-  let left = mergeSort(array.slice(0, midpointIndex));
-  let right = mergeSort(array.slice(midpointIndex));
+  const mid = Math.floor(array.length / 2);
+  const left = mergeSort(array.slice(0, mid));
+  const right = mergeSort(array.slice(mid));
+  const merged = [];
 
-  let result = [];
-  let leftPointer = 0;
-  let rightPointer = 0;
+  let leftPointer = 0, rightPointer = 0;
 
-  while (result.length < left.length + right.length) {
-    if (left[leftPointer] < right[rightPointer] || leftPointer < left.length && rightPointer === right.length) {
-      result.push(left[leftPointer]);
-      leftPointer++;
+  while (leftPointer < left.length && rightPointer < right.length) {
+    if (left[leftPointer] < right[rightPointer]) {
+      merged.push(left[leftPointer])
+      leftPointer++
     } else {
-      result.push(right[rightPointer]);
-      rightPointer++;
+      merged.push(right[rightPointer])
+      rightPointer++
     }
   }
-  return result;
-};
 
-//with helper function--------------------------------------------------
+  while (leftPointer < left.length) {
+    merged.push(left[leftPointer])
+    leftPointer++
+  }
 
-const mergeSortII = (array) => {
-  if (array.length <= 1) {
+  while (rightPointer < right.length) {
+    merged.push(right[rightPointer]);
+    rightPointer++
+  }
+
+  return merged;
+}
+
+function mergeSort(array) {
+  if (array.length < 2) {
     return array;
   }
 
-  const midpointIndex = Math.floor((array.length / 2));
-  let left = array.slice(0, midpointIndex);
-  let right = array.slice(midpointIndex);
+  const mid = Math.floor(array.length / 2);
+  const left = mergeSort(array.slice(0, mid));
+  const right = mergeSort(array.slice(mid));
 
-  return merge(mergeSortII(left), mergeSortII(right));
-};
+  const merged = [];
+  let leftPointer = 0;
+  let rightPointer = 0;
 
-
-const merge = (left, right) => {
-  let result = [], leftindexPointer = 0, rightindexPointer = 0;
-
-  while (leftindexPointer < left.length && rightindexPointer < right.length) {
-    if (left[leftindexPointer] < right[rightindexPointer]) {
-      result.push(left[leftindexPointer]);
-      leftindexPointer++;
+  while (merged.length < left.length + right.length) {
+    if (left[leftPointer] < right[rightPointer] || leftPointer < left.length && rightPointer === right.length) {
+      merged.push(left[leftPointer]);
+      leftPointer++;
     } else {
-      result.push(right[rightindexPointer]);
-      rightindexPointer++;
+      merged.push(right[rightPointer]);
+      rightPointer++;
     }
   }
-  return result.concat(left.slice(leftindexPointer), right.slice(rightindexPointer))
-};
+  return merged;
+}
 
-console.log(mergeSort([3,4,1,2,5,6]))
+
+function mergeSort(array) {
+  if (array.length < 2) {
+    return array;
+  }
+
+  const mid = Math.floor(array.length / 2);
+  const left = mergeSort(array.slice(0, mid));
+  const right = mergeSort(array.slice(mid));
+  const merged = [];
+
+  let leftPointer = 0, rightPointer = 0;
+
+  while (leftPointer < left.length && rightPointer < right.length) {
+    if (left[leftPointer] < right[rightPointer]) {
+      merged.push(left[leftPointer])
+      leftPointer++
+    } else {
+      merged.push(right[rightPointer])
+      rightPointer++
+    }
+  }
+  return merged.concat(left.slice(leftPointer), right.slice(rightPointer));
+}
+
+//with helper function--------------------------------------------------
+
+function mergeSort(array) {
+  if (array.length < 2) {
+    return array;
+  }
+
+  const mid = Math.floor((array.length / 2));
+  const left = mergeSort(array.slice(0, mid));
+  const right = mergeSort(array.slice(mid));
+
+  return merge(left, right);
+}
+
+function merge(left, right) {
+  const merged = [];
+  let leftPointer = 0, rightPointer = 0;
+
+  while (merged.length < left.length + right.length) {
+    if (left[leftPointer] < right[rightPointer] || leftPointer < left.length && rightPointer === right.length) {
+      merged.push(left[leftPointer])
+      leftPointer++;
+    } else {
+      merged.push(right[rightPointer])
+      rightPointer++;
+    }
+  }
+
+  return merged;
+}
+
+console.log(mergeSort([3, 4, 1, 2, 5, 6]))
+console.log(mergeSort([5, 2, 1, 15, 2]))
+console.log(mergeSort([5, 2, 1, 15]))
+console.log(mergeSort([]))
