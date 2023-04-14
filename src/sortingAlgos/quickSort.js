@@ -1,4 +1,26 @@
 function quickSort(array) {
+  if (array.length < 2) {
+    return array;
+  }
+
+  const reference = 0;
+  const smallValues = [];
+  const largeValues = [];
+
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < array[reference]) {
+      smallValues.push(array[i])
+    } else {
+      largeValues.push(array[i])
+    }
+  }
+  const left = quickSort(smallValues);
+  const right = quickSort(largeValues);
+
+  return left.concat(array[reference], right)
+}
+
+function quickSort(array) {
   if (array.length < 2) return array;
 
   const pivotIdx = 0;
