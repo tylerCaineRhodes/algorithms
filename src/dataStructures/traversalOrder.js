@@ -117,7 +117,7 @@ const DF_PREORDER_PRINT_SD = (node, seen = []) => {
 
 const DF_INORDER_PRINT_SD = (node, seen = []) => {
   if (node.left) {
-   DF_INORDER_PRINT_SD(node.left, seen);
+    DF_INORDER_PRINT_SD(node.left, seen);
   }
   seen.push(node.value);
 
@@ -138,10 +138,32 @@ const DF_POSTORDER_PRINT_SD = (node, seen = []) => {
   return seen;
 };
 
-export { 
-  DF_PREORDER_PRINT, 
-  DF_INORDER_PRINT, DF_POSTORDER_PRINT, 
-  DF_PREORDER_PRINT_SD, 
-  DF_INORDER_PRINT_SD, 
-  DF_POSTORDER_PRINT_SD 
+function DFS_PRINT_ITERATIVE_INORDER(tree) {
+  const stack = [];
+  const visited = [];
+
+  let curr = tree;
+
+  while (curr || stack.length) {
+
+    if (curr) {
+      stack.push(curr)
+      curr = curr.left;
+      continue;
+    }
+
+    curr = stack.pop()
+    visited.push(curr.value)
+    curr = curr.right
+  }
+
+  return visited;
+}
+
+export {
+  DF_PREORDER_PRINT,
+  DF_INORDER_PRINT, DF_POSTORDER_PRINT,
+  DF_PREORDER_PRINT_SD,
+  DF_INORDER_PRINT_SD,
+  DF_POSTORDER_PRINT_SD
 };
