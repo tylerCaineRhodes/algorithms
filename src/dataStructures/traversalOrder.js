@@ -138,7 +138,26 @@ const DF_POSTORDER_PRINT_SD = (node, seen = []) => {
   return seen;
 };
 
-function DFS_PRINT_ITERATIVE_INORDER(tree) {
+function preOrderTraversal(root) {
+  const result = [];
+  const stack = [root];
+
+  while (stack.length) {
+    const node = stack.pop();
+    result.push(node.value);
+
+    if (node.right) {
+      stack.push(node.right);
+    }
+
+    if (node.left) {
+      stack.push(node.left);
+    }
+  }
+  return result;
+}
+
+function DFS_PRINT_INORDER_ITERATIVE(tree) {
   const stack = [];
   const visited = [];
 
@@ -159,6 +178,32 @@ function DFS_PRINT_ITERATIVE_INORDER(tree) {
 
   return visited;
 }
+
+
+function postOrderTraversal(root) {
+  const stack1 = [root],
+    stack2 = [],
+    result = [];
+
+  while (stack1.length > 0) {
+    let node = stack1.pop();
+    stack2.push(node);
+
+    if (node.left) {
+      stack1.push(node.left);
+    }
+    if (node.right) {
+      stack1.push(node.right);
+    }
+  }
+
+  while (stack2.length > 0) {
+    result.push(stack2.pop().value);
+  }
+
+  return result;
+}
+
 
 export {
   DF_PREORDER_PRINT,

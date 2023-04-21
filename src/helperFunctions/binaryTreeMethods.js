@@ -6,7 +6,7 @@ class Node {
   }
   //bfs insertion, alt
   insert = (val) => {
-    let collection = [this];
+    const collection = [this];
 
     while (collection.length) {
       let current = collection.pop();
