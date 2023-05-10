@@ -6,7 +6,7 @@ var isValid = function (s) {
     '}': '{',
   };
 
-  for (let bracket of s) {
+  for (const bracket of s) {
     if (bracket in dictionary) {
       if (dictionary[bracket] !== stack[stack.length - 1]) {
         return false;

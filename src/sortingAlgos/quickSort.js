@@ -9,15 +9,15 @@ function quickSort(array) {
 
   for (let i = 1; i < array.length; i++) {
     if (array[i] < array[reference]) {
-      smallValues.push(array[i])
+      smallValues.push(array[i]);
     } else {
-      largeValues.push(array[i])
+      largeValues.push(array[i]);
     }
   }
   const left = quickSort(smallValues);
   const right = quickSort(largeValues);
 
-  return left.concat(array[reference], right)
+  return left.concat(array[reference], right);
 }
 
 function quickSort(array) {
@@ -82,4 +82,23 @@ function quickSortHelper(array, startIdx, endIdx) {
 
 function swap(i, j, array) {
   [array[i], array[j]] = [array[j], array[i]];
+}
+
+function quickSort(array) {
+  if (array.length < 2) {
+    return array;
+  }
+  const referenceIdx = 0;
+  const smallValues = [];
+  const largeValues = [];
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < array[referenceIdx]) {
+      smallValues.push(array[i]);
+    } else {
+      largeValues.push(array[i]);
+    }
+  }
+  const left = quickSort(smallValues);
+  const right = quickSort(largeValues);
+  return left.concat(array[referenceIdx], right);
 }

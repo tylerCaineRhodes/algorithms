@@ -138,7 +138,7 @@ const DF_POSTORDER_PRINT_SD = (node, seen = []) => {
   return seen;
 };
 
-function preOrderTraversal(root) {
+function preOrderTraversalIterative(root) {
   const result = [];
   const stack = [root];
 
@@ -157,36 +157,31 @@ function preOrderTraversal(root) {
   return result;
 }
 
-function DFS_PRINT_INORDER_ITERATIVE(tree) {
+function inOrderTraversalIterative(tree) {
   const stack = [];
   const visited = [];
-
   let curr = tree;
 
   while (curr || stack.length) {
-
     if (curr) {
-      stack.push(curr)
+      stack.push(curr);
       curr = curr.left;
       continue;
     }
-
-    curr = stack.pop()
-    visited.push(curr.value)
-    curr = curr.right
+    curr = stack.pop();
+    visited.push(curr.value);
+    curr = curr.right;
   }
-
   return visited;
 }
 
+function postOrderTraversalIterative(root) {
+  const stack1 = [root];
+  const stack2 = [];
+  const result = [];
 
-function postOrderTraversal(root) {
-  const stack1 = [root],
-    stack2 = [],
-    result = [];
-
-  while (stack1.length > 0) {
-    let node = stack1.pop();
+  while (stack1.length) {
+    const node = stack1.pop();
     stack2.push(node);
 
     if (node.left) {
@@ -197,18 +192,17 @@ function postOrderTraversal(root) {
     }
   }
 
-  while (stack2.length > 0) {
+  while (stack2.length) {
     result.push(stack2.pop().value);
   }
-
   return result;
 }
 
-
 export {
   DF_PREORDER_PRINT,
-  DF_INORDER_PRINT, DF_POSTORDER_PRINT,
+  DF_INORDER_PRINT,
+  DF_POSTORDER_PRINT,
   DF_PREORDER_PRINT_SD,
   DF_INORDER_PRINT_SD,
-  DF_POSTORDER_PRINT_SD
+  DF_POSTORDER_PRINT_SD,
 };

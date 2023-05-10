@@ -30,44 +30,44 @@ airports.forEach((thing) => {
 airports.forEach(addNode);
 routes.forEach((route) => addEdge(...route));
 
-const BFS = (singleNode) => {
-  const seen = new Set();
-  let collection = [singleNode];
+const BFS = (node) => {
+  const memo = new Set();
+  const queue = [node];
 
-  while (collection.length > 0) {
-    const current = collection.shift();
-    const edges = adjacencyList.get(current);
+  while (queue.length > 0) {
+    const curr = queue.shift();
+    const neighbors = adjacencyList.get(curr);
 
-    for (const child of edges) {
-      if (!seen.has(child)) {
-        seen.add(child);
-        collection.push(child);
+    for (const neighbor of neighbors) {
+      if (!memo.has(neighbor)) {
+        memo.add(neighbor);
+        queue.push(neighbor);
 
-        if (child === 'BKK') {
+        if (neighbor === 'BKK') {
           console.log('found');
           return;
         }
       }
     }
   }
-  let result = [];
-  let resultiterator = seen.values();
-  for (let thing of resultiterator) {
-    result.push(thing);
-  }
-  return result;
-};
 
-const DFS = (singleNode, seen = new Set()) => {
-  seen.add(singleNode);
-  const edges = adjacencyList.get(singleNode);
-
-  for (let child of edges) {
-    if (!seen.has(child)) {
-      DFS(child, seen);
-    }
+  const seen = [];
+  for (const connection of memo.values()) {
+    seen.push(connection);
   }
   return seen;
+};
+
+const DFS = (node, memo = new Set()) => {
+  memo.add(node);
+  const neibors = adjacencyList.get(node);
+
+  for (let neighbor of neibors) {
+    if (!memo.has(neighbor)) {
+      DFS(neighbor, memo);
+    }
+  }
+  return memo;
 };
 //----------------------------------------------------------
 const graph = new Map();
@@ -89,25 +89,22 @@ const removeEdge = (node1, node2) => {
 };
 
 const hasEdge = (node1, node2) => {
-  if(!graph.get(node1)){
+  if (!graph.get(node1)) {
     return false;
   }
   return graph.get(node1).contains(node2);
-}
+};
 
 const target = 'something';
-
-const removeNode = (node) => {
-  //iterate over graph and delete children 
-  for(let [key,val] of graph){
-    if(val.contains(node)){
-      val = val.filter(val => val !== node)
+const removeNode = (node, target) => {
+  for (let [key, val] of graph) {
+    if (val.contains(node)) {
+      val = val.filter((val) => val !== node);
     }
-    if(key === node){
-      graph.delete(key)
-    } 
+    if (key === node) {
+      graph.delete(key);
+    }
   }
-
   if (node === target) {
     graph.delete(node);
   }

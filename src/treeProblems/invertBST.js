@@ -1,8 +1,10 @@
 const invertTree = (root) => {
-  if(root === null){
+  if (root === null) {
     return null;
-  } 
-  const left = invertTree(root.left), right = invertTree(root.right)
+  }
+  const left = invertTree(root.left);
+  const right = invertTree(root.right);
+
   root.left = right;
   root.right = left;
 
@@ -15,6 +17,7 @@ function invertBinaryTree(tree) {
   while (queue.length) {
     let curr = queue.shift();
     if (!curr) continue;
+
     [curr.left, curr.right] = [curr.right, curr.left];
     queue.push(curr.left);
     queue.push(curr.right);
@@ -30,4 +33,4 @@ function invertBinaryTreeI(tree) {
   return tree;
 }
 
-export { invertTree }
+export { invertTree };

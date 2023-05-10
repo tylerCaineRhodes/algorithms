@@ -15,7 +15,7 @@ const solveNQueensI = (n) => {
 
   const addSolution = () => {
     const solution = [];
-    queens.forEach(col => {
+    queens.forEach((col) => {
       StringBuilder(col, solution);
     });
     output.push(solution);
@@ -34,17 +34,17 @@ const solveNQueensI = (n) => {
   };
 
   const couldPlace = (row, col) => {
-  return !cols[col] && !hills[row - col] && !dales[row + col];
+    return !cols[col] && !hills[row - col] && !dales[row + col];
   };
 
   const backtrack = (row = 0) => {
-    if(row === n){
+    if (row === n) {
       addSolution();
       return;
     }
 
-    for(let col = 0; col < n; col++){
-      if(couldPlace(row, col)){
+    for (let col = 0; col < n; col++) {
+      if (couldPlace(row, col)) {
         placeQueen(row, col);
         backtrack(row + 1);
         removeQueen();
@@ -60,7 +60,7 @@ const solveNQueensI = (n) => {
   return output;
 };
 
-console.log(solveNQueensI(4))
+console.log(solveNQueensI(4));
 
 var solveNQueensII = function (n) {
   const result = [];
@@ -69,14 +69,23 @@ var solveNQueensII = function (n) {
 };
 
 const areConflicts = (board, col_pos, currentRow) => {
-   return board.some((placedColVal, takenRow) => {
-    return placedColVal === col_pos || placedColVal === col_pos + currentRow - takenRow || placedColVal === col_pos - currentRow + takenRow
+  return board.some((placedColVal, takenRow) => {
+    return (
+      placedColVal === col_pos ||
+      placedColVal === col_pos + currentRow - takenRow ||
+      placedColVal === col_pos - currentRow + takenRow
+    );
   });
 };
 
 const backtrack = (result, n, board = [], currentRow = 0) => {
   if (currentRow === n) {
-    result.push(board.map((placedColVal) => '.'.repeat(placedColVal) + 'Q' + '.'.repeat(n - placedColVal - 1)));
+    result.push(
+      board.map(
+        (placedColVal) =>
+          '.'.repeat(placedColVal) + 'Q' + '.'.repeat(n - placedColVal - 1)
+      )
+    );
     return;
   }
 
@@ -87,8 +96,7 @@ const backtrack = (result, n, board = [], currentRow = 0) => {
       board.pop();
     }
   }
-}
-
+};
 
 function solveNQueensIII(n, solutions = [], queens = [], row = 0) {
   if (row === n) {

@@ -25,16 +25,16 @@ class Tree {
 }
 
 const DFS = (node, val) => {
-  let collection = [node];
+  const collection = [node];
 
   while (collection.length) {
-    let node = collection.shift();
+    const curr = collection.shift();
 
-    if (node.value === val) {
+    if (curr.value === val) {
       return true;
     }
-    for (let i = node.children.length - 1; i >= 0; i--) {
-      collection.unshift(node.children[i]);
+    for (let i = curr.children.length - 1; i >= 0; i--) {
+      collection.unshift(curr.children[i]);
     }
   }
   return false;
@@ -75,12 +75,12 @@ function BFS_PRINT(tree) {
   const seen = [];
 
   while (queue.length) {
-    const curr = queue.shift()
+    const curr = queue.shift();
 
     seen.push(curr.value);
 
     for (const child of curr.children) {
-      queue.push(child)
+      queue.push(child);
     }
   }
 
@@ -90,20 +90,15 @@ function BFS_PRINT(tree) {
 function DFS_PRINT(tree) {
   const stack = [tree];
   const seen = [];
-
   while (stack.length) {
     const curr = stack.pop();
-
     seen.push(curr.value);
-
     for (let i = curr.children.length - 1; i >= 0; i--) {
-      stack.push(curr.children[i])
+      stack.push(curr.children[i]);
     }
   }
-
   return seen;
 }
-
 
 const parent = new Tree(1);
 [2, 3, 4, 5].map(parent.add.bind(parent));
@@ -111,8 +106,8 @@ const parent = new Tree(1);
 const firstChild = parent.children[0];
 [6, 7, 8, 9].map(firstChild.add.bind(firstChild));
 
-firstChild.children[0].add(10)
-firstChild.children[3].children = [new Tree(11, [new Tree(13)]), new Tree(12)]
+firstChild.children[0].add(10);
+firstChild.children[3].children = [new Tree(11, [new Tree(13)]), new Tree(12)];
 
 /*
  Example tree looks like:
@@ -127,5 +122,5 @@ firstChild.children[3].children = [new Tree(11, [new Tree(13)]), new Tree(12)]
             [13]
 */
 
-console.log(BFS_PRINT(parent)) // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 , 13
-console.log(DFS_PRINT(parent))  // 1, 2, 6, 10, 7, 8, 9, 11, 12, 3, 4, 5
+console.log(BFS_PRINT(parent)); // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 , 13
+console.log(DFS_PRINT(parent)); // 1, 2, 6, 10, 7, 8, 9, 11, 12, 3, 4, 5

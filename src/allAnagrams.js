@@ -1,19 +1,21 @@
 const allAnagrams = (string) => {
-  let iterate;
-  const anagramStorage = new Set(), anagrams = [];
+  const anagramStorage = new Set();
 
-  (iterate = (resultString, remainderString) => {
+  function iterate(resultString, remainderString) {
     if (resultString.length === string.length) {
       anagramStorage.add(resultString);
       return;
     }
     for (let i = 0; i < remainderString.length; i++) {
-      iterate(resultString + remainderString[i], remainderString.slice(0, i) + remainderString.slice(i + 1));
+      iterate(
+        resultString + remainderString[i],
+        remainderString.slice(0, i) + remainderString.slice(i + 1)
+      );
     }
-  })('', string);
-  
-  anagramStorage.forEach(val => anagrams.push(val));
-  return anagrams;
+  }
+  iterate('', string);
+
+  return [...anagramStorage];
 };
 
 function RPS(string) {
@@ -31,7 +33,6 @@ function RPS(string) {
   }
   iterate('');
   return result;
-
 }
 console.log(RPS('abc'));
 console.log(allAnagrams('abc'));
