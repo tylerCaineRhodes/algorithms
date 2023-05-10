@@ -1,137 +1,144 @@
-export class Node {
-	constructor(value) {
-		this.value = value;
-		this.prev = null;
-		this.next = null;
-	}
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.prev = null;
+    this.next = null;
+  }
 }
 
-export class DoublyLinkedList {
-	constructor() {
-		this.head = null;
-		this.tail = null;
-	}
+class DoublyLinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
 
-	setHead(node) {
-		if (!this.head) {
-			this.head = node;
-			this.tail = node;
-			return;
-		} else {
-			this.insertBefore(this.head, node)
-		}
-	}
+  setHead(node) {
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      this.insertBefore(this.head, node);
+    }
+  }
 
-	setTail(node) {
-		if (!this.tail) {
-			this.setHead(node);
-			return;
-		} else {
-			this.insertAfter(this.tail, node)
-		}
-	}
+  setTail(node) {
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      this.insertAfter(this.tail, node);
+    }
+  }
 
-	insertBefore(node, nodeToInsert) {
-		if (nodeToInsert === this.head && nodeToInsert === this.tail || !node) return;
+  insertBefore(beforeNode, nodeToInsert) {
+    if (!beforeNode) return;
 
-		this.remove(nodeToInsert);
+    if (nodeToInsert === this.head && nodeToInsert === this.tail) return;
 
-		nodeToInsert.prev = node.prev;
-		nodeToInsert.next = node;
-		if (!node.prev) {
-			this.head = nodeToInsert;
-		} else {
-			node.prev.next = nodeToInsert;
-		}
-		node.prev = nodeToInsert;
-	}
+    this.remove(nodeToInsert);
 
+    nodeToInsert.next = beforeNode;
+    nodeToInsert.prev = beforeNode.prev;
 
-	insertAfter(node, nodeToInsert) {
-		if (nodeToInsert === this.head && nodeToInsert === this.tail || !node) return;
+    if (!nodeToInsert.prev) {
+      this.head = nodeToInsert;
+    } else {
+      nodeToInsert.prev.next = nodeToInsert;
+    }
+    beforeNode.prev = nodeToInsert;
+  }
 
-		this.remove(nodeToInsert)
+  insertAfter(afterNode, nodeToInsert) {
+    if (!afterNode) return;
 
-		nodeToInsert.next = node.next;
-		nodeToInsert.prev = node;
-		if (!node.next) {
-			this.tail = nodeToInsert;
-		} else {
-			node.next.prev = nodeToInsert;
-		}
-		node.next = nodeToInsert;
-	}
+    if (nodeToInsert === this.head && nodeToInsert === this.tail) return;
 
-	insertAtPosition(position, nodeToInsert) {
-		if (position === 1) {
-			this.setHead(nodeToInsert);
-			return;
-		}
+    this.remove(nodeToInsert);
 
-		let current = this.head, increment = 1;
+    nodeToInsert.prev = afterNode;
+    nodeToInsert.next = afterNode.next;
 
-		while (current && position !== increment) {
-			current = current.next;
-			increment++;
-		}
+    if (!nodeToInsert.next) {
+      this.tail = nodeToInsert;
+    } else {
+      afterNode.next.prev = nodeToInsert;
+    }
 
-		if (current) {
-			this.insertBefore(current, nodeToInsert);
-		} else {
-			this.setTail(nodeToInsert);
-		}
-	}
+    afterNode.next = nodeToInsert;
+  }
 
-	removeNodesWithValue(value) {
-		let current = this.head;
+  insertAtPosition(position, nodeToInsert) {
+    if (position === 1) {
+      this.setHead(nodeToInsert);
+      return;
+    }
 
-		while (current) {
-			let nodeToRemove = current;
-			current = current.next;
-			if (nodeToRemove.value === value) {
-				this.remove(nodeToRemove);
-			}
-		}
-	}
+    let increment = 1;
 
-	remove(node) {
-		if (node === this.head) {
-			this.head = this.head.next;
-		}
-		if (node === this.tail) {
-			this.tail = this.tail.prev;
-		}
-		//study party with this-y
-		if (node.prev) {
-			node.prev.next = node.next;
-		}
-		if (node.next) {
-			node.next.prev = node.prev;
-		}
-		node.next = null;
-		node.prev = null;
-	}
+    let curr = this.head;
+    while (position !== increment && curr) {
+      curr = curr.next;
+      increment++;
+    }
 
-	getNodeAtIndex = (index) => {
-		if(index < 0) return null;
+    if (curr) {
+      this.insertBefore(curr, nodeToInsert);
+    } else {
+      this.setTail(nodeToInsert);
+    }
+  }
 
-		let curr = this.head;
+  remove(node) {
+    if (node === this.head) {
+      this.head = this.head.next;
+    }
 
-		for(let i = 0; i < index; i++){
-			if(!curr) return null;
+    if (node === this.tail) {
+      this.tail = this.tail.prev;
+    }
 
-			curr = curr.next
-		}
-		return curr;
-	}
+    if (node.prev) {
+      node.prev.next = node.next;
+    }
 
-	containsNodeWithValue(value) {
-		let current = this.head;
+    if (node.next) {
+      node.next.prev = node.prev;
+    }
+    node.next = null;
+    node.prev = null;
+  }
 
-		while (current) {
-			if (current.value === value) return true;
-			current = current.next
-		}
-		return false;
-	}
+  getNodeAtIndex(idx) {
+    if (idx < 0) return null;
+
+    let curr = this.head;
+    for (let i = 0; i < idx; i++) {
+      if (!curr) return null;
+      curr = curr.next;
+    }
+    return curr;
+  }
+
+  removeNodesWithValue(value) {
+    let curr = this.head;
+
+    while (curr) {
+      let nodeToRemove = curr;
+      curr = curr.next;
+
+      if (nodeToRemove.value === value) {
+        this.remove(nodeToRemove);
+      }
+    }
+  }
+
+  containsNodeWithValue(value) {
+    let curr = this.head;
+
+    while (curr) {
+      if (curr.value === value) return true;
+      curr = curr.next;
+    }
+    return false;
+  }
 }
