@@ -79,3 +79,70 @@ function MIN_HEAP_FUNC(a, b) {
 function MAX_HEAP_FUNC(a, b) {
   return a > b;
 }
+
+class MinHeap {
+  constructor(array) {
+    this.heap = this.buildHeap(array);
+  }
+
+  buildHeap(array) {
+    const lastParent = Math.floor((array.length - 1) / 2);
+    for (let i = lastParent; i >= 0; i--) {
+      this.siftDown(i, array.length - 1, array);
+    }
+    return array;
+  }
+
+  siftDown(currIdx = 0, lastIdx = this.heap.length - 1, heap = this.heap) {
+    let left = currIdx * 2 + 1;
+
+    while (left <= lastIdx) {
+      const right = currIdx * 2 + 2 <= lastIdx ? currIdx * 2 + 2 : -1;
+      const toSwap = right !== -1 && heap[right] < heap[left] ? right : left;
+
+      if (heap[toSwap] < heap[currIdx]) {
+        this.swap(toSwap, currIdx, heap);
+        currIdx = toSwap;
+        left = currIdx * 2 + 1;
+      } else {
+        return;
+      }
+    }
+  }
+
+  siftUp(currIdx = this.heap.length - 1, heap = this.heap) {
+    let parent = Math.floor((currIdx - 1) / 2);
+
+    while (currIdx > 0) {
+      if (heap[currIdx] < heap[parent]) {
+        this.swap(parent, currIdx, heap);
+        currIdx = parent;
+        parent = Math.floor((currIdx - 1) / 2);
+      } else {
+        return;
+      }
+    }
+  }
+
+  insert(value) {
+    this.heap.push(value);
+    this.siftUp();
+  }
+
+  peek() {
+    return this.heap[0];
+  }
+
+  remove() {
+    this.swap(0, this.heap.length - 1, this.heap);
+    const removed = this.heap.pop();
+    this.siftDown();
+    return removed;
+  }
+
+  swap(i, j, heap) {
+    const temp = heap[i];
+    heap[i] = heap[j];
+    heap[j] = temp;
+  }
+}
