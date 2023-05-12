@@ -7,7 +7,7 @@ const getValues = (inputObjects) => {
 
     for (let i = 0; i < classes.length - 1; i++) {
       const currentClassName = classes[i];
-      if(curr[currentClassName] === undefined) {
+      if (curr[currentClassName] === undefined) {
         curr[currentClassName] = {};
       }
       curr = curr[currentClassName];

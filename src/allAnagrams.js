@@ -18,21 +18,23 @@ const allAnagrams = (string) => {
   return [...anagramStorage];
 };
 
-function RPS(string) {
-  const result = [];
-
-  function iterate(currentPermutation) {
-    if (currentPermutation.length === string.length) {
-      result.push(currentPermutation);
-      return;
-    }
-
-    for (let i = 0; i < string.length; i++) {
-      iterate(currentPermutation + string[i]);
-    }
-  }
-  iterate('');
-  return result;
+function allAnagrams(str) {
+  return dfs(str);
 }
-console.log(RPS('abc'));
+
+function dfs(remainder, result = '', collection = []) {
+  if (!remainder.length) {
+    return collection.push(result);
+  }
+
+  for (let i = 0; i < remainder.length; i++) {
+    dfs(
+      remainder.slice(0, i) + remainder.slice(i + 1),
+      result + remainder[i],
+      collection
+    );
+  }
+  return collection;
+}
+
 console.log(allAnagrams('abc'));

@@ -1,29 +1,33 @@
 const spiralTraversal = (arr) => {
-  let result = [];
-  let minRow = 0, maxRow = arr.length - 1, minCol = 0, maxCol = arr[0].length - 1;
+  const result = [];
 
-  while(minRow <= maxRow && minCol <= maxCol){
-    for(let i = minCol; i <= maxCol; i++){
+  let minRow = 0;
+  let minCol = 0;
+  let maxRow = arr.length - 1;
+  let maxCol = arr[0].length - 1;
+
+  while (minRow <= maxRow && minCol <= maxCol) {
+    for (let i = minCol; i <= maxCol; i++) {
       result.push(arr[minRow][i]);
     }
     minRow++;
-    for(let j = minRow; j <= maxRow; j++){
-      result.push(arr[j][maxCol]);
+    for (let i = minRow; i <= maxRow; i++) {
+      result.push(arr[i][maxCol]);
     }
     maxCol--;
 
-    for(let k = maxCol; k >= minCol; k--){
-      result.push(arr[maxRow][k]);
+    for (let i = maxCol; i >= minCol; i--) {
+      result.push(arr[maxRow][i]);
     }
     maxRow--;
-    
-    for(let l = maxRow; l >= minRow; l--){
-      result.push(arr[l][minCol])
+
+    for (let i = maxRow; i >= minRow; i--) {
+      result.push(arr[i][minCol]);
     }
     minCol++;
   }
-  return result
-}
+  return result;
+};
 
 function spiralTraversalII(array) {
   let minCol = 0,
@@ -59,4 +63,10 @@ function spiralTraversalII(array) {
   return result;
 }
 
-console.log(spiralTraversal([[1,2,3], [4,5,6], [7,8,9]]))
+console.log(
+  spiralTraversal([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ])
+);
