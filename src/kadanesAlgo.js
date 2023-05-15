@@ -1,5 +1,5 @@
 function kadanes(arr) {
-  let maxSum = -1;
+  let maxSum = -Infinity;
   let currSum = 0;
 
   for (let i = 0; i < arr.length; i++) {
@@ -13,7 +13,7 @@ function kadanes(arr) {
 function kadanes(arr) {
   const maxSubArr = [0, 0];
 
-  let max = -1;
+  let max = -Infinity;
   let currentSum = 0;
 
   for (let i = 0; i < arr.length; i++) {
