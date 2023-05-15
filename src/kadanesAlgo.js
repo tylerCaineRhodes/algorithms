@@ -1,24 +1,42 @@
-const kadanes = (arr) => {
-  let max = 0; 
-  let currentMax = 0;
-  let maxSubArr = [0,0];
+function kadanes(arr) {
+  let maxSum = -1;
+  let currSum = 0;
 
-  for(let i =0; i < arr.length; i++){
-    currentMax += arr[i];
-    
-    if(currentMax > max){
-      max = currentMax;
-      maxSubArr[1] = i;
-    } 
-
-    if(currentMax < 0){
-      currentMax = 0;
-      maxSubArr[0] = i + 1
-    }
+  for (let i = 0; i < arr.length; i++) {
+    currSum += arr[i];
+    maxSum = Math.max(maxSum, currSum);
+    currSum = Math.max(0, currSum);
   }
-  return arr.slice(maxSubArr[0], maxSubArr[1] + 1)
+  return maxSum;
 }
 
+function kadanes(arr) {
+  const maxSubArr = [0, 0];
 
-console.log('expects 7 --> ', kadanes([-2,-3,4,-1,-2,1,5,-3]))
-console.log('expect 3 --> ', kadanes([1, -2, 3, -2])); 
+  let max = -1;
+  let currentSum = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    currentSum += arr[i];
+
+    if (currentSum > max) {
+      max = currentSum;
+      maxSubArr[1] = i + 1;
+    }
+
+    if (currentSum < 0) {
+      currentSum = 0;
+      maxSubArr[0] = i + 1;
+    }
+  }
+  return arr.slice(maxSubArr[0], maxSubArr[1]);
+}
+
+console.log(
+  'expected: { sum: 7, arr: [4, -1, -2, 1, 5] }',
+  `actual arr: [${kadanes([-2, -3, 4, -1, -2, 1, 5, -3])}]`
+);
+console.log(
+  'expected: { sum: 3, arr: [3] }',
+  `actual arr: [ ${kadanes([1, -2, 3, -2])}]`
+);
