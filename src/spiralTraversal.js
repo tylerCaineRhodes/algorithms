@@ -17,11 +17,13 @@ const spiralTraversal = (arr) => {
     maxCol--;
 
     for (let i = maxCol; i >= minCol; i--) {
+      if (minRow > maxRow) break;
       result.push(arr[maxRow][i]);
     }
     maxRow--;
 
     for (let i = maxRow; i >= minRow; i--) {
+      if (minCol > maxCol) break;
       result.push(arr[i][minCol]);
     }
     minCol++;
