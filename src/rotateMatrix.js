@@ -25,10 +25,12 @@ function rotateMatrix(matrix, direction) {
 }
 
 function rotateMatrixInPlace(matrix) {
+  reverseDiagonals(matrix);
   for (const row of matrix) {
+    // translate
     row.reverse();
   }
-  return reverseDiagonals(matrix);
+  return matrix;
 }
 
 function reverseDiagonals(matrix) {
@@ -74,6 +76,6 @@ const expected1CounterClockwise = [
 ];
 
 console.log(rotateMatrix(matrix1));
-
 assertEquals(rotateMatrix(matrix1), expected1Clockwise);
+assertEquals(rotateMatrixInPlace(matrix1), expected1Clockwise);
 assertEquals(rotateMatrix(matrix1, 1), expected1CounterClockwise);
