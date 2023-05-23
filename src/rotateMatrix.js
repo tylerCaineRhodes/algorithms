@@ -24,6 +24,22 @@ function rotateMatrix(matrix, direction) {
   return rotated;
 }
 
+function rotateMatrixInPlace(matrix) {
+  for (const row of matrix) {
+    row.reverse();
+  }
+  return reverseDiagonals(matrix);
+}
+
+function reverseDiagonals(matrix) {
+  for (let r = 0; r < matrix.length; r++) {
+    for (let c = 0; c < r; c++) {
+      [matrix[r][c], matrix[c][r]] = [matrix[c][r], matrix[r][c]];
+    }
+  }
+  return matrix;
+}
+
 function assertEquals(actualMatrix, expectedMatrix) {
   if (actualMatrix.length !== expectedMatrix.length) return false;
   if (actualMatrix[0].length !== expectedMatrix[0].length) return false;
