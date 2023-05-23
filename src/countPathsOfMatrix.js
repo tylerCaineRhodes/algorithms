@@ -1,30 +1,42 @@
-
-const isValidSquare = (matrix, row, col) => {
-  if(!matrix[row] || !matrix[row][col]) return false;
-  return true;
+function countPaths(grid, r, c) {
+  if (!isValidSquare(grid, r, c)) return 0;
+  if (isAtEnd(grid, r, c)) return 1;
+  return countPaths(grid, r + 1, c) + countPaths(grid, r, c + 1);
 }
 
-const isAtEnd = (matrix, row, col) => {
-  if(row === matrix.length - 1 && col === matrix[0].length - 1) return true;
-  return false;
+function isValidSquare(grid, r, c) {
+  return r < grid.length && c < grid[0].length;
 }
 
-const countPaths = (grid, row, col) => {
-  //base cases
-  //if square isn't valid, return 0
-  //if square is last square, return 1
-  if (!isValidSquare(grid, row, col)) return 0;
-  if (isAtEnd(grid, row, col)) return 1;
+function isAtEnd(grid, r, c) {
+  return r === grid.length - 1 && c === grid[0].length - 1;
+}
 
-  return countPaths(grid, row + 1, col) + countPaths(grid, row, col + 1);
-};
+function countPathsMemoized(grid, r, c, memo) {
+  if (!isValidSquare(grid, r, c)) return 0;
 
+  if (isAtEnd(grid, r, c)) {
+    memo[r][c] = true;
+    return memo[r][c];
+  }
+  if (memo[r][c]) return memo[r][c];
 
-let test = [
-  [1, 1, 0, 1], 
-  [1, 0, 1, 1], 
-  [1, 1, 1, 1], 
-  [0, 1, 1, 1]
+  memo[r][c] =
+    countPathsMemoized(grid, r + 1, c, memo) +
+    countPathsMemoized(grid, r, c + 1, memo);
+  return memo[r][c];
+}
+
+const test = [
+  [1, 1, 0, 1],
+  [1, 0, 1, 1],
+  [1, 1, 1, 1],
+  [0, 1, 1, 1],
 ];
 
-console.log(countPaths(test, 0, 0))
+const memo = new Array(test.length)
+  .fill()
+  .map(() => new Array(test[0].length).fill(false));
+
+console.log(countPaths(test, 0, 0));
+console.log(countPathsMemoized(test, 0, 0, memo));
