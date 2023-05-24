@@ -16,7 +16,7 @@ function countPathsMemoized(grid, r, c, memo) {
   if (!isValidSquare(grid, r, c)) return 0;
 
   if (isAtEnd(grid, r, c)) {
-    memo[r][c] = true;
+    memo[r][c] = 1;
     return memo[r][c];
   }
   if (memo[r][c]) return memo[r][c];
@@ -36,7 +36,7 @@ const test = [
 
 const memo = new Array(test.length)
   .fill()
-  .map(() => new Array(test[0].length).fill(false));
+  .map(() => new Array(test[0].length).fill(0));
 
 console.log(countPaths(test, 0, 0));
 console.log(countPathsMemoized(test, 0, 0, memo));
