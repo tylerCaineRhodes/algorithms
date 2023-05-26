@@ -6,33 +6,34 @@ class AncestralTree {
 }
 
 function getYoungestCommonAncestor(topAncestor, descendantOne, descendantTwo) {
-  const dec1Depth = calculateDepth(descendantOne, topAncestor);
-  const dec2Depth = calculateDepth(descendantTwo, topAncestor);
+  const depthOne = getDepth(descendantOne, topAncestor);
+  const depthTwo = getDepth(descendantTwo, topAncestor);
 
-  if(dec1Depth > dec2Depth){
-    return traverseUp(descendantOne, descendantTwo, dec1Depth - dec2Depth);
+  if (depthTwo < depthOne) {
+    return converge(descendantOne, descendantTwo, depthOne - depthTwo);
   } else {
-    return traverseUp(descendantTwo, descendantOne, dec2Depth - dec1Depth);
+    return converge(descendantTwo, descendantOne, depthTwo - depthOne);
   }
 }
 
-function traverseUp(low, high, diff){
-  while (diff !== 0){
-    low = low.ancestor;
-    diff-=1; 
-  }
-  while(low !== high){
-    low = low.ancestor;
-    high = high.ancestor;
-  }
-  return low;
-}
-
-function calculateDepth(descendant, topAncestor) {
+function getDepth(descendant, topAncestor) {
   let depth = 0;
-  while(descendant !== topAncestor){
-    descendant = descendant.ancestor;
-    depth +=1;
+  let curr = descendant;
+  while (curr !== topAncestor) {
+    depth++;
+    curr = curr.ancestor;
   }
   return depth;
+}
+
+function converge(lowAncestor, highAncestor, diff) {
+  while (diff > 0) {
+    lowAncestor = lowAncestor.ancestor;
+    diff--;
+  }
+  while (lowAncestor !== highAncestor) {
+    lowAncestor = lowAncestor.ancestor;
+    highAncestor = highAncestor.ancestor;
+  }
+  return lowAncestor;
 }
