@@ -104,3 +104,33 @@ function getNeighborsIII(row, col, grid, seen) {
     neighbors.push([row, col + 1]);
   return neighbors;
 }
+
+var numIslands = function (grid) {
+  const seen = Array.from({ length: grid.length }, () =>
+    new Array(grid[0].length).fill(false)
+  );
+  let islandsCount = 0;
+  for (let r = 0; r < grid.length; r++) {
+    for (let c = 0; c < grid[0].length; c++) {
+      if (seen[r][c]) continue;
+      if (grid[r][c] === '0') continue;
+      islandsCount++;
+      dfs(grid, r, c, seen);
+    }
+  }
+  return islandsCount;
+};
+
+function dfs(grid, r, c, memo) {
+  if (r < 0 || c < 0) return;
+  if (r > grid.length - 1 || c > grid[0].length - 1) return;
+
+  if (grid[r][c] === '0') return;
+  if (memo[r][c]) return;
+
+  memo[r][c] = true;
+  dfs(grid, r - 1, c, memo);
+  dfs(grid, r + 1, c, memo);
+  dfs(grid, r, c - 1, memo);
+  dfs(grid, r, c + 1, memo);
+}
