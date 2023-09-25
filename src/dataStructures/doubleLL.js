@@ -142,3 +142,5 @@ class DoublyLinkedList {
     return false;
   }
 }
+
+export { Node, DoublyLinkedList };

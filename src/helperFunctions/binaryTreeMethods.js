@@ -38,7 +38,7 @@ const bfsInsertion = (node, arr, index) => {
 };
 
 const sortedArrayToBST = (arr, start, end) => {
-  if(start > end) return;
+  if (start > end) return;
 
   let mid = Math.floor((start + end) / 2);
   const root = new Node(arr[mid]);
@@ -46,7 +46,7 @@ const sortedArrayToBST = (arr, start, end) => {
   root.left = sortedArrayToBST(arr, start, mid - 1);
   root.right = sortedArrayToBST(arr, mid + 1, end);
   return root;
-}
+};
 
 function BFS_Print(node) {
   let collection = [node];
@@ -89,11 +89,11 @@ const normalDF_Print = (node) => {
 
   const traverse = (node) => {
     seen.push(node.value);
-    
-    if(node.left){
+
+    if (node.left) {
       traverse(node.left);
     }
-    if(node.right){
+    if (node.right) {
       traverse(node.right);
     }
   };
@@ -107,5 +107,5 @@ export {
   BFS_Print,
   DFS_Print,
   normalDF_Print,
-  sortedArrayToBST
+  sortedArrayToBST,
 };
