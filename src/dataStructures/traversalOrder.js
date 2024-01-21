@@ -159,7 +159,7 @@ function preOrderTraversalIterative(root) {
 
 function inOrderTraversalIterative(tree) {
   const stack = [];
-  const visited = [];
+  const result = [];
   let curr = tree;
 
   while (curr || stack.length) {
@@ -169,10 +169,10 @@ function inOrderTraversalIterative(tree) {
       continue;
     }
     curr = stack.pop();
-    visited.push(curr.value);
+    result.push(curr.value);
     curr = curr.right;
   }
-  return visited;
+  return result;
 }
 
 function postOrderTraversalIterative(root) {

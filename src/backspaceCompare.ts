@@ -46,7 +46,7 @@ function getTypedChars(str: string) {
   for (let i = 0; i < str.length; i++) {
     const char = str[i];
     if (char === '#') {
-      typed = typed.slice(0, typed.length - 1);
+      typed = typed.slice(0, -1);
     } else {
       typed += char;
     }
