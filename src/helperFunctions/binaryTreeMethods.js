@@ -37,6 +37,59 @@ const bfsInsertion = (node, arr, index) => {
   return node;
 };
 
+function bfsInsertionII(arr, index = 0) {
+  if (index >= arr.length) return null;
+
+  const node = new Node(arr[index]);
+
+  node.left = bfsInsertion(arr, 2 * index + 1);
+  node.right = bfsInsertion(arr, 2 * index + 2);
+
+  return node;
+}
+
+function BFS_demarkated_print(node) {
+  if (!node) return [];
+
+  const queue = [node];
+
+  let level = 0;
+  const seen = [`LEVEL-${level++}`];
+
+  while (queue.length) {
+    const levelSize = queue.length;
+
+    for (let i = 0; i < levelSize; i++) {
+      const currentNode = queue.shift();
+      seen.push(currentNode ? currentNode.value : null);
+
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
+    }
+
+    if (queue.length) seen.push(`LEVEL-${level++}`);
+  }
+
+  return seen;
+}
+
+function BFS_with_level_print(node) {
+  if (!node) return [];
+
+  const queue = [{ node, level: 0 }];
+  const seen = [];
+
+  while (queue.length) {
+    const { node: curr, level } = queue.pop();
+    seen.push({ value: curr?.value, level });
+
+    if (curr.left) queue.unshift({ node: curr.left, level: level + 1 });
+    if (curr.right) queue.unshift({ node: curr.right, level: level + 1 });
+  }
+
+  return seen;
+}
+
 const sortedArrayToBST = (arr, start, end) => {
   if (start > end) return;
 
