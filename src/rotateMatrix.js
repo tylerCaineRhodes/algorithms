@@ -14,7 +14,9 @@ function rotateClockwise(matrix, rotated) {
   for (let r = 0; r < matrix.length; r++) {
     for (let c = 0; c < matrix[0].length; c++) {
       const newRow = c;
+
       const newCol = matrix.length - 1 - r;
+
       rotated[newRow][newCol] = matrix[r][c];
     }
   }
