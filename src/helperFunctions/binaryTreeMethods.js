@@ -48,6 +48,60 @@ function bfsInsertionII(arr, index = 0) {
   return node;
 }
 
+var serialize = function (root) {
+  if (!root) return [];
+
+  const serialized = [];
+  const queue = [root];
+  while (queue.length) {
+    const curr = queue.shift();
+
+    if (curr === null) {
+      serialized.push(null);
+      continue;
+    }
+
+    serialized.push(curr.val);
+    queue.push(curr.left);
+    queue.push(curr.right);
+  }
+
+  while (serialized[serialized.length - 1] === null) {
+    serialized.pop();
+  }
+
+  return serialized;
+};
+
+function deserialize(data) {
+  if (!data.length) return null;
+  if (data[0] === null) return data[0];
+
+  const root = new Node(data[0]);
+  const queue = [root];
+
+  let i = 1;
+  while (i < data.length) {
+    const curr = queue.shift();
+
+    if (data[i] !== null) {
+      curr.left = new Node(data[i]);
+      queue.push(curr.left);
+    }
+    i++;
+
+    if (i < data.length) {
+      if (data[i] !== null) {
+        curr.right = new Node(data[i]);
+        queue.push(curr.right);
+      }
+    }
+
+    i++;
+  }
+  return root;
+}
+
 function BFS_demarkated_print(node) {
   if (!node) return [];
 
@@ -161,4 +215,6 @@ export {
   DFS_Print,
   normalDF_Print,
   sortedArrayToBST,
+  serialize,
+  deserialize,
 };
