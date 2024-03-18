@@ -1,8 +1,36 @@
-function kadanes(arr) {
-  let maxSum = -Infinity;
-  let currSum = 0;
+function kadanes(array) {
+  /*
+    dp[i] = max(array[i] + dp[i - 1], array[i])
+  */
 
-  for (let i = 0; i < arr.length; i++) {
+  const n = array.length;
+  const dp = new Array(n);
+
+  let maxSum = array[0];
+
+  for (let i = 1; i < n; i++) {
+    dp[i] = Math.max(array[i] + dp[i - 1], array[i]);
+    maxSum = Math.max(maxSum, dp[i]);
+  }
+  return maxSum;
+}
+
+function kadanes(arr) {
+  let maxSum = arr[0];
+  let currSum = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    currSum = Math.max(currSum + arr[i], arr[i]);
+    maxSum = Math.max(maxSum, currSum);
+  }
+  return maxSum;
+}
+
+function kadanes(arr) {
+  let maxSum = arr[0];
+  let currSum = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
     currSum += arr[i];
     maxSum = Math.max(maxSum, currSum);
     currSum = Math.max(0, currSum);

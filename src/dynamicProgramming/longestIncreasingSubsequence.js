@@ -1,26 +1,14 @@
-function longestIncreasingSubsequence(array) {
-  const sequences = new Array(array.length);
-  const lengths = array.map((num) => 1);
-  let maxLengthIdx = 0;
-  for (let i = 0; i < array.length; i++) {
-    const currentNum = array[i];
+function lengthOfLIS(array) {
+  const dp = new Array(array.length).fill(1);
+  /*
+    array = [4, 2, 3, 4, 1]
+    dp =    [1, 2, 3, 4, 5]
+  */
+  for (let i = 1; i < array.length; i++) {
     for (let j = 0; j < i; j++) {
-      const otherNum = array[j];
-      if (otherNum < currentNum && lengths[j] + 1 >= lengths[i]) {
-        lengths[i] = lengths[j] + 1;
-        sequences[i] = j;
-      }
+      if (array[j] >= array[i]) continue;
+      dp[i] = Math.max(dp[i], dp[j] + 1);
     }
-    if (lengths[i] >= lengths[maxLengthIdx]) maxLengthIdx = i;
   }
-  return buildSequence(array, sequences, maxLengthIdx);
-}
-
-function buildSequence(array, sequences, currentIdx) {
-  const sequence = [];
-  while (currentIdx !== undefined) {
-    sequence.push(array[currentIdx]);
-    currentIdx = sequences[currentIdx];
-  }
-  return sequence.reverse();
+  return Math.max(...dp);
 }

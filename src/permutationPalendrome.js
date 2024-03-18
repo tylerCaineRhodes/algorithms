@@ -9,7 +9,6 @@ function hasPalendrome(string) {
       unpaired.add(letter);
     }
   }
-  console.log(unpaired);
   return unpaired.size <= 1;
 }
 
