@@ -27,7 +27,6 @@ function minimumPassesOfMatrix(matrix) {
   let passes = 0;
   while (queue.length) {
     let currQueueSize = queue.length;
-
     while (currQueueSize) {
       const [currRow, currCol] = queue.shift();
 

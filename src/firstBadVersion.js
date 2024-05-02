@@ -13,3 +13,4 @@ var solution = function (isBadVersion) {
     return firstBadVersion;
   };
 };
+

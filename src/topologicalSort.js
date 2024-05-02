@@ -44,7 +44,7 @@ class JobGraph {
   constructor(jobs) {
     this.nodes = [];
     this.graph = {};
-    for (let job of jobs) {
+    for (const job of jobs) {
       this.addNode(job);
     }
   }
@@ -52,13 +52,11 @@ class JobGraph {
     this.graph[job] = new JobNode(job);
     this.nodes.push(this.graph[job]);
   }
-
   addPrereq(job, prereq) {
     const jobNode = this.getNode(job);
     const prereqNode = this.getNode(prereq);
     jobNode.prereqs.push(prereqNode);
   }
-
   getNode(job) {
     if (!(job in this.graph)) {
       this.addNode(job);

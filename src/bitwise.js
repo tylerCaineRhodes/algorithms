@@ -65,3 +65,4 @@ console.log(invertedMask & mask);
 console.log(2 << 1); // 00000100 = 4
 // shift right
 console.log(4 >> 1); // 00000010 = 2
+

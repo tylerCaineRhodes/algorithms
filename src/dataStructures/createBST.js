@@ -9,7 +9,6 @@ tree2.insert(15);
 const tree3 = new BST();
 [3, 1, 2, 4, 5].forEach(tree3.insert.bind(tree3));
 
-
 function createBst(arr, start = 0, end = arr.length - 1) {
   if (start > end) return;
 
@@ -26,10 +25,10 @@ function createBstII(array) {
   if (!array.length) return null;
 
   const mid = Math.floor(array.length / 2);
-  const tree = new BST(array[mid])
+  const tree = new BST(array[mid]);
 
-  tree.left = createBst(array.slice(0, mid))
-  tree.right = createBst(array.slice(mid + 1))
+  tree.left = createBst(array.slice(0, mid));
+  tree.right = createBst(array.slice(mid + 1));
 
   return tree;
 }
@@ -47,8 +46,8 @@ function createBSTIII(array) {
 
   while (p1 <= p2) {
     const leftMid = Math.floor((p1 + p2) / 2);
-    curr.left = new BST(array[leftMid])
-    curr = curr.left
+    curr.left = new BST(array[leftMid]);
+    curr = curr.left;
     p2 = leftMid - 1;
   }
 
@@ -59,14 +58,13 @@ function createBSTIII(array) {
 
   while (p1 <= p2) {
     const rightMid = Math.floor((p1 + p2) / 2);
-    curr.right = new BST(array[rightMid])
-    curr = curr.right
+    curr.right = new BST(array[rightMid]);
+    curr = curr.right;
     p1 = rightMid + 1;
   }
 
   return tree;
 }
-
 
 function sortedArrayToBST(arr) {
   const mid = Math.floor(arr.length / 2);
@@ -90,4 +88,44 @@ function sortedArrayToBST(arr) {
     }
   }
   return root;
+}
+
+function minHeightBst(array) {
+  const construct = (array, bst, start, end) => {
+    if (end < start) return;
+    let mid = ~~((start + end) / 2);
+    if (!bst) {
+      bst = new BST(array[mid]);
+    } else {
+      bst.insert(array[mid]);
+    }
+    construct(array, bst, start, mid - 1);
+    construct(array, bst, mid + 1, end);
+    return bst;
+  };
+  return construct(array, null, 0, array.length - 1);
+}
+
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(value) {
+    if (value < this.value) {
+      if (this.left === null) {
+        this.left = new BST(value);
+      } else {
+        this.left.insert(value);
+      }
+    } else {
+      if (this.right === null) {
+        this.right = new BST(value);
+      } else {
+        this.right.insert(value);
+      }
+    }
+  }
 }

@@ -161,7 +161,6 @@ function inOrderTraversalIterative(tree) {
   const stack = [];
   const result = [];
   let curr = tree;
-
   while (curr || stack.length) {
     if (curr) {
       stack.push(curr);

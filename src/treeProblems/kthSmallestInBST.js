@@ -22,11 +22,22 @@ var kthSmallest = function (root, k) {
   return answer;
 };
 
-
 class Node {
-  constructor(val, left, right){
+  constructor(val, left, right) {
     this.val = val || 0;
     this.left = left || null;
     this.right = right || null;
   }
 }
+
+var kthSmallest = function (root, k) {
+  const arr = inOrderArr(root);
+  function inOrderArr(curr, arr = []) {
+    if (!curr) return arr;
+    inOrderArr(curr.left, arr);
+    arr.push(curr.val);
+    inOrderArr(curr.right, arr);
+    return arr;
+  }
+  return arr[k - 1];
+};

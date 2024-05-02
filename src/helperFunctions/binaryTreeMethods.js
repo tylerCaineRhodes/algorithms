@@ -10,7 +10,7 @@ class Node {
 
     while (collection.length) {
       let current = collection.pop();
-   
+
       if (!current.left) {
         current.left = new Node(val);
         return;
@@ -100,6 +100,36 @@ function deserialize(data) {
     i++;
   }
   return root;
+}
+
+function deserialize(data) {
+  const vals = data.split(',');
+  let i = 0;
+  function dfs() {
+    if (vals[i] === 'N') {
+      i++;
+      return null;
+    }
+    const node = new Node(parseInt(vals[i]));
+    i++;
+    node.left = dfs();
+    node.right = dfs();
+    return node;
+  }
+  return dfs();
+}
+
+function serialize(root) {
+  const result = [];
+  function dfs(curr) {
+    if (!curr) return result.push('N');
+
+    result.push(curr.val);
+    dfs(curr.left);
+    dfs(curr.right);
+  }
+  dfs(root);
+  return result.join(',');
 }
 
 function BFS_demarkated_print(node) {
