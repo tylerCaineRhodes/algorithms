@@ -43,4 +43,64 @@ function backtrack(arr, total, combo, memo, idx) {
   return memo;
 }
 
+function combinationSum(nums, target) {
+  const sums = []
+
+  function backtrack(arr, total, combo, idx) {
+    if (total < 0) return;
+
+    if (total === 0) {
+      return sums.push(combo.slice());
+    }
+
+    for (let i = idx; i < arr.length; i++) {
+      combo.push(arr[i]);
+      total -= arr[i];
+      backtrack(arr, total, combo, i);
+      combo.pop();
+      total += arr[i];
+    }
+  }
+  backtrack(nums, target, [], 0)
+  return sums;
+}
+
+function combinationSum(nums, target) {
+  const sums = []
+
+  function backtrack(arr, total, combo, idx) {
+    if (total < 0) return;
+
+    if (total === 0) {
+      return sums.push(combo.slice());
+    }
+
+    for (let i = idx; i < arr.length; i++) {
+      backtrack(arr, total - arr[i], [...combo, arr[i]], i);
+    }
+  }
+
+  backtrack(nums, target, [], 0)
+  return sums;
+}
+
+function combinationSum(nums, target) {
+  const sums = []
+
+  function backtrack(total, combo, i) {
+    if (total < 0) return;
+    if (total === 0) {
+      sums.push([...combo]);
+      return
+    }
+    if (i >= nums.length) return;
+
+    backtrack(total - nums[i], [...combo, nums[i]], i); // include curr num and stay
+    backtrack( total, combo, i + 1);
+  }
+
+  backtrack(target, [], 0)
+  return sums;
+}
+
 console.log(combinationSum([2, 3, 6, 7], 7));
