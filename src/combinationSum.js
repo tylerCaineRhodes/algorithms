@@ -5,6 +5,9 @@ function combinationSum(arr, target) {
   const backtrackSum = (total, combo) => {
     if (total < 0) return;
 
+    const key = JSON.stringify(combo.slice().sort((a, b) => a - b));
+    if (storage.has(key)) return;
+
     if (total === 0) {
       return storage.add(JSON.stringify(combo.slice().sort((a, b) => a - b)));
     }

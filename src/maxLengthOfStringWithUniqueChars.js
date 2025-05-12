@@ -4,7 +4,8 @@ function maxLengthI(arr) {
 
 function dfs(arr, idx, result) {
   const resultSet = new Set(result.split(''));
-  if (resultSet.size !== result.length) return 0;
+  const containsDuplicates = resultSet.size !== result.length;
+  if (containsDuplicates) return 0;
 
   let largest = result.length;
   for (let i = idx; i < arr.length; i++) {
@@ -15,19 +16,18 @@ function dfs(arr, idx, result) {
 }
 
 function maxLengthII(arr) {
-  const result = [''];
+  const validWords = [''];
   let largest = 0;
   for (const word of arr) {
-    innerloop: for (let i = 0; i < result.length; i++) {
-      if (result[i] === word) break innerloop;
-      const newWord = result[i] + word;
-      const newWordSet = new Set(newWord.split(''));
+    const validWordsLen = validWords.length;
+    for (let i = 0; i < validWordsLen; i++) {
+      const newWord = validWords[i] + word;
 
-      if (newWord.length !== newWordSet.size) {
+      if (newWord.length !== new Set(newWord.split('')).size) {
         continue;
       }
 
-      result.push(newWord);
+      validWords.push(newWord);
       largest = Math.max(largest, newWord.length);
     }
   }
