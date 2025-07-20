@@ -146,3 +146,86 @@ class MinHeap {
     heap[j] = temp;
   }
 }
+
+
+class PriorityQueue {
+  constructor(valueFunction) {
+    this.valueFunction = valueFunction;
+    this.heap = [];
+  }
+
+  enqueue(num) {
+    this.heap.push(num);
+    this.siftUp(this.heap.length - 1);
+  }
+
+  dequeue() {
+    this.swap(0, this.heap.length - 1);
+    const dequeued = this.heap.pop();
+    this.siftDown(0);
+    return dequeued;
+  }
+
+  siftUp(currIdx) {
+    if (currIdx <= 0) return;
+
+    const parent = Math.floor((currIdx - 1) / 2);
+
+    if (this.valueFunction(this.heap[currIdx], this.heap[parent])) {
+      this.swap(currIdx, parent);
+      this.siftUp(parent);
+    }
+  }
+
+  siftDown(curr) {
+    const left = curr * 2 + 1;
+
+    if (left > this.heap.length - 1) return;
+
+    const right = curr * 2 + 2;
+    const toSwap =
+      right <= this.heap.length - 1 &&
+        this.valueFunction(this.heap[right], this.heap[left])
+        ? right
+        : left;
+
+    if (this.valueFunction(this.heap[toSwap], this.heap[curr])) {
+      this.swap(curr, toSwap);
+      this.siftDown(toSwap);
+    }
+  }
+
+  swap(node1, node2) {
+    const tmp = this.heap[node1];
+    this.heap[node1] = this.heap[node2];
+    this.heap[node2] = tmp;
+  }
+
+  size() {
+    return this.heap.length;
+  }
+
+  toArray() {
+    return this.heap;
+  }
+
+  front() {
+    return this.heap[0];
+  }
+
+  isEmpty() {
+    return this.heap.length === 0;
+  }
+}
+
+export class MinPriorityQueue extends PriorityQueue {
+  constructor() {
+    super(MIN_HEAP_FUNC);
+  }
+}
+
+export class MaxPriorityQueue extends PriorityQueue {
+  constructor() {
+    super(MAX_HEAP_FUNC);
+  }
+}
