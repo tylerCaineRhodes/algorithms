@@ -11,6 +11,9 @@
     "test-coverage": "jest --coverage",
     "test-l": "jest --watch",
     "test-lc": "jest --coverage --watch",
+    "exec": "tsx",
+    "dev": "tsx watch",
+    "repl": "tsx",
     "eslint": "npx eslint",
     "lint:fix": "npx eslint --fix"
   },
@@ -31,6 +34,8 @@
     "@babel/plugin-proposal-pipeline-operator": "^7.24.7",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
-    "eslint": "^8.9.0"
+    "eslint": "^8.9.0",
+    "prettier": "^3.8.3",
+    "tsx": "^4.21.0"
   }
 }
