@@ -21,7 +21,7 @@ class MinHeap {
 
     while (
       currentIndex > 0 &&
-      this.heap[parentIndex] > this.heap[currentIndex]
+        this.heap[parentIndex] > this.heap[currentIndex]
     ) {
       this.swapsies(currentIndex, parentIndex);
       currentIndex = parentIndex;
@@ -57,7 +57,7 @@ class MinHeap {
 
       const indexToSwap =
         rightChildIndex !== -1 &&
-        this.heap[rightChildIndex] < this.heap[leftChildIndex]
+          this.heap[rightChildIndex] < this.heap[leftChildIndex]
           ? rightChildIndex
           : leftChildIndex;
 
@@ -158,3 +158,64 @@ console.log(test.getMin());
 console.log(test.heap);
 console.log(test.getKthSmallest(3));
 console.log(test.heap);
+
+class MinHeap extends Array {
+  enqueue(val) {
+    this.push(val);
+    this.#siftUp();
+  }
+
+  dequeue() {
+    this.#swap(0, this.length -1);
+    const dequeued = this.pop();
+
+    this.#siftDown();
+    return dequeued;
+  }
+
+  top() {
+    return this[0];
+  }
+
+  isEmpty() {
+    return this.length === 0;
+  }
+
+  size() {
+    return this.length;
+  }
+
+  #siftUp(idx = this.length - 1) {
+    if (idx <= 0) return;
+
+    const parent = Math.floor((idx - 1) / 2);
+    if (this[idx] < this[parent]) {
+      this.#swap(idx, parent);
+      this.#siftUp(parent);
+    }
+  }
+
+  #swap(a, b) {
+    const tmp = this[a];
+    this[a] = this[b];
+    this[b] = tmp;
+  }
+
+  #siftDown(idx = 0) {
+    const maxIdx = this.length - 1;
+    const left = idx * 2 + 1;
+    if (left > maxIdx) return;
+
+    const right = idx * 2 + 2 <= maxIdx ? idx * 2 + 2 : -1;
+    const toSwap = right !== -1 && this[right] < this[left] ? right : left;
+
+    if (this[toSwap] < this[idx]) {
+      this.#swap(idx, toSwap);
+      this.#siftDown(toSwap);
+    }
+  }
+}
+
+const h = new MinHeap();
+const arr = [4, -1, 2, 0, 18, -5, 3]
+arr.forEach((v) => h.enqueue(v))
