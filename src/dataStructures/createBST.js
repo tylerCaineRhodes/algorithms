@@ -106,7 +106,7 @@ function minHeightBst(array) {
   return construct(array, null, 0, array.length - 1);
 }
 
-class BST {
+class BSTII {
   constructor(value) {
     this.value = value;
     this.left = null;
@@ -116,13 +116,13 @@ class BST {
   insert(value) {
     if (value < this.value) {
       if (this.left === null) {
-        this.left = new BST(value);
+        this.left = new BSTII(value);
       } else {
         this.left.insert(value);
       }
     } else {
       if (this.right === null) {
-        this.right = new BST(value);
+        this.right = new BSTII(value);
       } else {
         this.right.insert(value);
       }

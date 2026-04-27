@@ -48,7 +48,7 @@ function bfsInsertionII(arr, index = 0) {
   return node;
 }
 
-var serialize = function (root) {
+var serializeII = function (root) {
   if (!root) return [];
 
   const serialized = [];
@@ -73,7 +73,7 @@ var serialize = function (root) {
   return serialized;
 };
 
-function deserialize(data) {
+function deserializeII(data) {
   if (!data.length) return null;
   if (data[0] === null) return data[0];
 

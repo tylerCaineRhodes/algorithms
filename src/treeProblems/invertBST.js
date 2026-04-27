@@ -24,7 +24,8 @@ function invertBinaryTree(tree) {
   }
   return tree;
 }
-function invertBinaryTree(tree) {
+
+function invertBinaryTreeI(tree) {
   let queue = [tree];
 
   while (queue.length) {
@@ -37,13 +38,13 @@ function invertBinaryTree(tree) {
   return tree;
 }
 
-function invertBinaryTreeI(tree) {
+function invertBinaryTreeII(tree) {
   if (!tree) return;
   [tree.left, tree.right] = [tree.right, tree.left];
 
   // call this at some point, in any order
-  invertBinaryTree(tree.left);
-  invertBinaryTree(tree.right);
+  invertBinaryTreeII(tree.left);
+  invertBinaryTreeII(tree.right);
 
   return tree;
 }
