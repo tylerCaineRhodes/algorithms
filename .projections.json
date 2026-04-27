@@ -1,0 +1,52 @@
+{
+  "src/*.ts": {
+    "type": "source",
+    "alternate": ["tests/{}.spec.ts", "tests/{}.spec.js"]
+  },
+  "src/*.js": {
+    "type": "source",
+    "alternate": ["tests/{}.spec.js", "tests/{}.spec.ts"]
+  },
+  "src/dataStructures/*.js": {
+    "type": "source",
+    "alternate": ["tests/{}.spec.js", "tests/{}.spec.ts"]
+  },
+  "tests/*.spec.ts": {
+    "type": "test",
+    "alternate": ["src/{}.ts", "src/{}.js", "src/dataStructures/{}.js"],
+    "dispatch": "npx jest tests/{}.spec.ts",
+    "template": [
+      "import { {} } from '../src/{}';",
+      "",
+      "const context = describe;",
+      "",
+      "describe('{}', () => {",
+      "  it('should exist', () => {",
+      "    expect({}()).toBeDefined();",
+      "  });",
+      "});",
+      ""
+    ]
+  },
+  "tests/*.spec.js": {
+    "type": "test",
+    "alternate": ["src/{}.js", "src/{}.ts", "src/dataStructures/{}.js"],
+    "dispatch": "npx jest tests/{}.spec.js",
+    "template": [
+      "import { {} } from '../src/{}';",
+      "",
+      "const context = describe;",
+      "",
+      "describe('{}', () => {",
+      "  it('should exist', () => {",
+      "    expect({}()).toBeDefined();",
+      "  });",
+      "});",
+      ""
+    ]
+  },
+  "*": {
+    "make": "npm test",
+    "start": "npm run dev"
+  }
+}
