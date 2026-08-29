@@ -1,7 +1,7 @@
 import { DoublyLinkedList, Node } from '../src/dataStructures/doubleLL.js';
 
 const printListVals = (head) => {
-  let results = [], curr = head; 
+  let results = [], curr = head;
 
   while(curr){
     results.push(curr.value)
@@ -118,7 +118,7 @@ describe('doubly linked list', () => {
     expect(linkedList.tail.next).toEqual(null);
   });
 
-  it('getNodeAtIndex: returns null if index doesn\'t exist', () => {
+  it("getNodeAtIndex: returns null if index doesn't exist", () => {
     expect(linkedList.getNodeAtIndex(13)).toEqual(null)
     expect(linkedList.getNodeAtIndex(-1)).toEqual(null)
   })
@@ -126,7 +126,7 @@ describe('doubly linked list', () => {
   it('insertAtPosition: sets number at position 2', () => {
     let node = new Node(404);
     linkedList.insertAtPosition(2, node);
-    expect(linkedList.getNodeAtIndex(1).value).toEqual(404);    
-    expect(linkedList.getNodeAtIndex(2).value).toEqual(2);    
+    expect(linkedList.getNodeAtIndex(1).value).toEqual(404);
+    expect(linkedList.getNodeAtIndex(2).value).toEqual(2);
   });
 });

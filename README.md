@@ -1,6 +1,6 @@
 # algorithms
 
-A personal collection of algorithm and data-structure implementations, each paired with a Jest test.
+A personal collection of algorithm and data-structure implementations, each paired with a Vitest test.
 
 ## Requirements
 
@@ -33,7 +33,7 @@ npm install
 ## Toolchain
 
 - **TypeScript** in native ESM mode (`"type": "module"`), with `bundler` module resolution. Mixed `.ts`/`.js` sources are allowed.
-- **Jest** with `@swc/jest` for fast, transpile-only test runs.
+- **Vitest** for fast, ESM-native test runs (esbuild transform, no separate config for `.js`→`.ts` resolution).
 - **ESLint 9** flat config ([eslint.config.mjs](eslint.config.mjs)) and **Prettier** for formatting.
 
 ## Conventions
