@@ -5,14 +5,14 @@ import {
   DF_PREORDER_PRINT_SD,
   DF_INORDER_PRINT_SD,
   DF_POSTORDER_PRINT_SD
-} from '../src/dataStructures/traversalOrder';
+} from '../src/dataStructures/traversalOrder.js';
 
 import {
   Node,
   bfsInsertion,
   BFS_Print,
   sortedArrayToBST
-} from '../src/helperFunctions/binaryTreeMethods';
+} from '../src/helperFunctions/binaryTreeMethods.js';
 
 describe('Node bfs insert method', () => {
   it('should create a new tree in BFS order', () => {

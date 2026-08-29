@@ -1,4 +1,4 @@
-import { findSubstring, findSubstringSimple } from "../src/smallestWindowContainingSubstring";
+import { findSubstring, findSubstringSimple } from "../src/smallestWindowContainingSubstring.js";
 
 const context = describe;
 

@@ -1,4 +1,4 @@
-import { mySqrt, newtonsMethod } from '../src/sqrtX';
+import { mySqrt, newtonsMethod } from '../src/sqrtX.js';
 
 const context = describe;
 

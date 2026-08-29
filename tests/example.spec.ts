@@ -1,4 +1,4 @@
-import { exampleFunc } from '../src/example';
+import { exampleFunc } from '../src/example.js';
 
 describe('exampleFunc', () => {
   it('returns true if colinear', () => {

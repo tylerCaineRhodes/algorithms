@@ -1,4 +1,4 @@
-import { backspaceCompare, backspaceCompareTotalUnit } from '../src/backspaceCompare';
+import { backspaceCompare, backspaceCompareTotalUnit } from '../src/backspaceCompare.js';
 describe('backspaceCompare', () => {
   it('should return true when both outputs result in an empty string', () => {
     expect(backspaceCompare('a#', 'x#y#z#')).toBe(true);

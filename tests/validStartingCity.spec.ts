@@ -1,4 +1,4 @@
-import { validStartingCity } from '../src/validStartingCity';
+import { validStartingCity } from '../src/validStartingCity.js';
 
 describe('validStartingCity', () => {
   const distances = [5, 25, 15, 10, 15];

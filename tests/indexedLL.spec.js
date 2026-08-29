@@ -1,4 +1,4 @@
-import { LL } from '../src/dataStructures/indexedLL';
+import { LL } from '../src/dataStructures/indexedLL.js';
 
 describe('empty linked list', () => {
   let linkedList;

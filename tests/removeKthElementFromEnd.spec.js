@@ -1,5 +1,5 @@
-import { LL } from '../src/dataStructures/indexedLL';
-import remove from '../src/linkedListProblems/removeKthToLastNode';
+import { LL } from '../src/dataStructures/indexedLL.js';
+import remove from '../src/linkedListProblems/removeKthToLastNode.js';
 
 describe('remove kth to last node from a linked list', () => {
   let linkedlist;

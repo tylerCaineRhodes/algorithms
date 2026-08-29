@@ -1,4 +1,4 @@
-import { knapsackProblem } from '../src/dynamicProgramming/knapsackProblem';
+import { knapsackProblem } from '../src/dynamicProgramming/knapsackProblem.js';
 
 describe('knapsack problem', () => {
   it('returns indeces and maxValue of knapsacks', () => {

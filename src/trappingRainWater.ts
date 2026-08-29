@@ -66,14 +66,10 @@ export function trappingRainWaterWithPointers(array: number[]) {
     const [leftHeight, rightHeight] = [array[p1], array[p2]];
     // operate on the smaller pointer
     if (leftHeight < rightHeight) {
-      leftHeight > maxLeft
-        ? (maxLeft = leftHeight)
-        : (amount += maxLeft - leftHeight);
+      leftHeight > maxLeft ? (maxLeft = leftHeight) : (amount += maxLeft - leftHeight);
       p1 += 1;
     } else {
-      rightHeight > maxRight
-        ? (maxRight = rightHeight)
-        : (amount += maxRight - rightHeight);
+      rightHeight > maxRight ? (maxRight = rightHeight) : (amount += maxRight - rightHeight);
       p2 -= 1;
     }
   }
@@ -88,13 +84,11 @@ export function trappingRainWaterWithStack(array: number[]) {
 
   while (p < array.length) {
     inner: while (stack.length && array[p] > array[stack[stack.length - 1]]) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const topOfStack = stack.pop()!;
       if (!stack.length) break inner;
 
       const distance = p - stack[stack.length - 1] - 1;
-      const boundedHeight =
-        Math.min(array[p], array[stack[stack.length - 1]]) - array[topOfStack];
+      const boundedHeight = Math.min(array[p], array[stack[stack.length - 1]]) - array[topOfStack];
       amount += distance * boundedHeight;
     }
     stack.push(p++);

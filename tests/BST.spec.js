@@ -1,5 +1,5 @@
-import { BST } from '../src/dataStructures/BST';
-import { DFS_Print } from '../src/helperFunctions/binaryTreeMethods';
+import { BST } from '../src/dataStructures/BST.js';
+import { DFS_Print } from '../src/helperFunctions/binaryTreeMethods.js';
 
 describe('BST', () => {
   let tree1, tree2, tree3;

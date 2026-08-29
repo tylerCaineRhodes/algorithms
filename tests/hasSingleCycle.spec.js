@@ -1,4 +1,4 @@
-import { hasSingleCycle, hasSingleCycle_AuxArray } from '../src/hasSingleCycle';
+import { hasSingleCycle, hasSingleCycle_AuxArray } from '../src/hasSingleCycle.js';
 
 describe('has single cycle', () => {
   it('should return true for an array representing a single cycle', () => {

@@ -1,4 +1,4 @@
-import { longestCommonSubsequence } from '../src/dynamicProgramming/longestCommonSubsequence';
+import { longestCommonSubsequence } from '../src/dynamicProgramming/longestCommonSubsequence.js';
 
 describe('longest common subsequence', () => {
   it('handles empty strings', () => {

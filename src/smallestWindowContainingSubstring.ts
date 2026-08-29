@@ -20,7 +20,7 @@
   https://leetcode.com/problems/minimum-window-substring/
 */
 
-import type { CharCount } from './permutationInString';
+import type { CharCount } from './permutationInString.js';
 
 function createPatternHash(pattern: string): CharCount {
   return pattern.split('').reduce((acc: CharCount, char) => {

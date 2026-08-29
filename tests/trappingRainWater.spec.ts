@@ -3,7 +3,7 @@ import {
   trappingRainWaterDynamic,
   trappingRainWaterWithPointers,
   trappingRainWaterWithStack,
-} from '../src/trappingRainWater';
+} from '../src/trappingRainWater.js';
 
 describe('trappingRainWater', () => {
   let inputArray: number[];

@@ -1,4 +1,4 @@
-import { findPermutation, findPermutationSimple, findPermutationII } from '../src/permutationInString';
+import { findPermutation, findPermutationSimple, findPermutationII } from '../src/permutationInString.js';
 
 const context = describe;
 

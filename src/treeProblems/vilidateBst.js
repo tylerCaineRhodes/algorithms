@@ -1,5 +1,5 @@
-import { Node, bfsInsertion } from '../helperFunctions/binaryTreeMethods';
-import { isSorted } from '../isSortedRecursive';
+import { Node, bfsInsertion } from '../helperFunctions/binaryTreeMethods.js';
+import { isSorted } from '../isSortedRecursive.js';
 const test = bfsInsertion(
   new Node(),
   [10, 5, 15, 2, 5, 13, 22, 1, null, null, null, null, 14, null, null],

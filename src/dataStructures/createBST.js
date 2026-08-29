@@ -1,4 +1,4 @@
-import { BST } from './BST';
+import { BST } from './BST.js';
 
 const tree1 = new BST(10);
 [5, 15, 2, 13, 22, 1, 14, 12, 10, 15].forEach(tree1.insert.bind(tree1));

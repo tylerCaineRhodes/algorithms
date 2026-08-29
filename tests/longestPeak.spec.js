@@ -1,4 +1,4 @@
-import { longestPeak } from '../src/longestPeak';
+import { longestPeak } from '../src/longestPeak.js';
 
 describe('longestpeak', () => {
   it('returns longest peak of two', () => {
